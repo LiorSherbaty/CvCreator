@@ -66,6 +66,71 @@ const templates: Record<string, TemplateConfig> = {
 };
 
 /**
+ * Reorders sections in the rendered HTML based on sectionOrder
+ * @param html - The rendered HTML string
+ * @param sectionOrder - Array of section names in desired order
+ * @returns HTML string with sections reordered
+ */
+function reorderSections(html: string, sectionOrder: string[]): string {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    // Find all elements with data-section attribute
+    const sectionElements = doc.querySelectorAll('[data-section]');
+
+    if (sectionElements.length === 0) {
+        return html;
+    }
+
+    // Group sections by their parent element
+    const sectionsByParent = new Map<Element, Element[]>();
+
+    sectionElements.forEach((section) => {
+        const parent = section.parentElement;
+        if (parent) {
+            if (!sectionsByParent.has(parent)) {
+                sectionsByParent.set(parent, []);
+            }
+            sectionsByParent.get(parent)!.push(section);
+        }
+    });
+
+    // Reorder sections within each parent
+    sectionsByParent.forEach((sections, parent) => {
+        // Sort sections based on sectionOrder
+        const sortedSections = [...sections].sort((a, b) => {
+            const aSection = a.getAttribute('data-section') || '';
+            const bSection = b.getAttribute('data-section') || '';
+            const aIndex = sectionOrder.indexOf(aSection);
+            const bIndex = sectionOrder.indexOf(bSection);
+
+            // If not in sectionOrder, keep at end
+            const aPos = aIndex === -1 ? Infinity : aIndex;
+            const bPos = bIndex === -1 ? Infinity : bIndex;
+
+            return aPos - bPos;
+        });
+
+        // Find the position of the first section in the parent
+        const firstSectionIndex = Array.from(parent.children).findIndex(
+            (child) => sections.includes(child)
+        );
+
+        // Remove all sections from parent
+        sections.forEach((section) => section.remove());
+
+        // Insert sorted sections at the original position
+        const referenceNode = parent.children[firstSectionIndex] || null;
+        sortedSections.forEach((section) => {
+            parent.insertBefore(section, referenceNode);
+        });
+    });
+
+    // Serialize back to HTML string
+    return doc.documentElement.outerHTML;
+}
+
+/**
  * Renders a CV template with the provided resume data
  * @param templateName - Name of the template to use
  * @param resumeData - Resume data conforming to ResumeSchema
@@ -93,7 +158,12 @@ export function renderTemplate(
     };
 
     // Render the complete HTML
-    const renderedHtml = Mustache.render(template.html, templateData);
+    let renderedHtml = Mustache.render(template.html, templateData);
+
+    // Reorder sections based on sectionOrder
+    if (resumeData.meta.sectionOrder && resumeData.meta.sectionOrder.length > 0) {
+        renderedHtml = reorderSections(renderedHtml, resumeData.meta.sectionOrder);
+    }
 
     return renderedHtml;
 }

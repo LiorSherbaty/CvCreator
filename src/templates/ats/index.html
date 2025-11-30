@@ -39,14 +39,14 @@
         </header>
 
         {{#basics.summary}}
-        <section class="section">
+        <section class="section" data-section="basics">
             <h3 class="section-title">Professional Summary</h3>
             <p class="content">{{basics.summary}}</p>
         </section>
         {{/basics.summary}}
 
         {{#skills.length}}
-        <section class="section">
+        <section class="section" data-section="skills">
             <h3 class="section-title">Technical Skills</h3>
             <div class="skills-content">
                 {{#skills}}
@@ -60,7 +60,7 @@
         {{/skills.length}}
 
         {{#work.length}}
-        <section class="section">
+        <section class="section" data-section="work">
             <h3 class="section-title">Experience</h3>
             {{#work}}
             <div class="entry">
@@ -91,7 +91,7 @@
         {{/work.length}}
 
         {{#education.length}}
-        <section class="section">
+        <section class="section" data-section="education">
             <h3 class="section-title">Education</h3>
             {{#education}}
             <div class="entry">
@@ -110,7 +110,7 @@
         {{/education.length}}
 
         {{#certifications.length}}
-        <section class="section">
+        <section class="section" data-section="certifications">
             <h3 class="section-title">Certifications</h3>
             <ul>
             {{#certifications}}

@@ -44,7 +44,7 @@
                 </div>
 
                 {{#skills.length}}
-                <div class="sidebar-section">
+                <div class="sidebar-section" data-section="skills">
                     <h3 class="sidebar-title">Skills</h3>
                     {{#skills}}
                     <div class="skill-group">
@@ -60,7 +60,7 @@
                 {{/skills.length}}
 
                 {{#languages.length}}
-                <div class="sidebar-section">
+                <div class="sidebar-section" data-section="languages">
                     <h3 class="sidebar-title">Languages</h3>
                     {{#languages}}
                     <div class="language-item">
@@ -74,14 +74,14 @@
 
             <main class="main-content">
                 {{#basics.summary}}
-                <section class="section">
+                <section class="section" data-section="basics">
                     <h3 class="section-title">Profile</h3>
                     <p class="summary">{{basics.summary}}</p>
                 </section>
                 {{/basics.summary}}
 
                 {{#work.length}}
-                <section class="section">
+                <section class="section" data-section="work">
                     <h3 class="section-title">Professional Experience</h3>
                     {{#work}}
                     <div class="entry">
@@ -106,7 +106,7 @@
                 {{/work.length}}
 
                 {{#education.length}}
-                <section class="section">
+                <section class="section" data-section="education">
                     <h3 class="section-title">Education</h3>
                     {{#education}}
                     <div class="entry">
