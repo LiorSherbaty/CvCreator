@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{basics.name}} - {{basics.label}}</title>
+    <style>
+        {{{styles}}}
+    </style>
+</head>
+<body{{#meta.onePageMode}} class="one-page-mode" {{/meta.onePageMode}}>
+    <div class="resume">
+        <!-- Header Section -->
+        <header class="header">
+            {{#basics.image}}
+            <div class="profile-image">
+                <img src="{{basics.image}}" alt="{{basics.name}}">
+            </div>
+            {{/basics.image}}
+            <div class="header-content">
+                <h1 class="name">{{basics.name}}</h1>
+                <h2 class="label">{{basics.label}}</h2>
+                <div class="contact-info">
+                    {{#basics.email}}
+                    <span class="contact-item">✉ {{basics.email}}</span>
+                    {{/basics.email}}
+                    {{#basics.phone}}
+                    <span class="contact-item">📞 {{basics.phone}}</span>
+                    {{/basics.phone}}
+                    {{#basics.location.city}}
+                    <span class="contact-item">📍 {{basics.location.city}}, {{basics.location.countryCode}}</span>
+                    {{/basics.location.city}}
+                    {{#basics.url}}
+                    <span class="contact-item">🔗 {{basics.url}}</span>
+                    {{/basics.url}}
+                </div>
+                {{#basics.profiles.length}}
+                <div class="social-profiles">
+                    {{#basics.profiles}}
+                    <a href="{{url}}" class="social-link">{{network}}</a>
+                    {{/basics.profiles}}
+                </div>
+                {{/basics.profiles.length}}
+            </div>
+        </header>
+
+        <!-- Summary Section -->
+        {{#basics.summary}}
+        <section class="section">
+            <h3 class="section-title">Professional Summary</h3>
+            <p class="summary">{{basics.summary}}</p>
+        </section>
+        {{/basics.summary}}
+
+        <!-- Work Experience Section -->
+        {{#work.length}}
+        <section class="section">
+            <h3 class="section-title">Work Experience</h3>
+            {{#work}}
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h4 class="entry-title">{{position}}</h4>
+                        <p class="entry-subtitle">{{name}}</p>
+                    </div>
+                    <div class="entry-date">{{startDate}} - {{endDate}}</div>
+                </div>
+                {{#summary}}
+                <p class="entry-summary">{{summary}}</p>
+                {{/summary}}
+                {{#highlights.length}}
+                <ul class="highlights">
+                    {{#highlights}}
+                    <li>{{.}}</li>
+                    {{/highlights}}
+                </ul>
+                {{/highlights.length}}
+            </div>
+            {{/work}}
+        </section>
+        {{/work.length}}
+
+        <!-- Education Section -->
+        {{#education.length}}
+        <section class="section">
+            <h3 class="section-title">Education</h3>
+            {{#education}}
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h4 class="entry-title">{{studyType}} in {{area}}</h4>
+                        <p class="entry-subtitle">{{institution}}</p>
+                    </div>
+                    <div class="entry-date">{{startDate}} - {{endDate}}</div>
+                </div>
+                {{#score}}
+                <p class="entry-summary">Grade: {{score}}</p>
+                {{/score}}
+            </div>
+            {{/education}}
+        </section>
+        {{/education.length}}
+
+        <!-- Skills Section -->
+        {{#skills.length}}
+        <section class="section">
+            <h3 class="section-title">Skills</h3>
+            <div class="skills-grid">
+                {{#skills}}
+                <div class="skill-item">
+                    <h4 class="skill-name">{{name}}</h4>
+                    {{#level}}
+                    <span class="skill-level">{{level}}</span>
+                    {{/level}}
+                    {{#keywords.length}}
+                    <div class="skill-keywords">
+                        {{#keywords}}
+                        <span class="keyword">{{.}}</span>
+                        {{/keywords}}
+                    </div>
+                    {{/keywords.length}}
+                </div>
+                {{/skills}}
+            </div>
+        </section>
+        {{/skills.length}}
+
+        <!-- Volunteer Work Section -->
+        {{#volunteer.length}}
+        <section class="section">
+            <h3 class="section-title">Volunteer Work</h3>
+            {{#volunteer}}
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h4 class="entry-title">{{position}}</h4>
+                        <p class="entry-subtitle">{{organization}}</p>
+                    </div>
+                    <div class="entry-date">{{startDate}} - {{endDate}}</div>
+                </div>
+                {{#summary}}
+                <p class="entry-summary">{{summary}}</p>
+                {{/summary}}
+                {{#highlights.length}}
+                <ul class="highlights">
+                    {{#highlights}}
+                    <li>{{.}}</li>
+                    {{/highlights}}
+                </ul>
+                {{/highlights.length}}
+            </div>
+            {{/volunteer}}
+        </section>
+        {{/volunteer.length}}
+
+        <!-- Certifications Section -->
+        {{#certifications.length}}
+        <section class="section">
+            <h3 class="section-title">Certifications</h3>
+            {{#certifications}}
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h4 class="entry-title">{{name}}</h4>
+                        <p class="entry-subtitle">{{issuer}}</p>
+                    </div>
+                    <div class="entry-date">{{date}}</div>
+                </div>
+            </div>
+            {{/certifications}}
+        </section>
+        {{/certifications.length}}
+
+        <!-- Publications Section -->
+        {{#publications.length}}
+        <section class="section">
+            <h3 class="section-title">Publications</h3>
+            {{#publications}}
+            <div class="entry">
+                <div class="entry-header">
+                    <div>
+                        <h4 class="entry-title">{{name}}</h4>
+                        <p class="entry-subtitle">{{publisher}}</p>
+                    </div>
+                    <div class="entry-date">{{releaseDate}}</div>
+                </div>
+                {{#summary}}
+                <p class="entry-summary">{{summary}}</p>
+                {{/summary}}
+            </div>
+            {{/publications}}
+        </section>
+        {{/publications.length}}
+
+        <!-- Languages Section -->
+        {{#languages.length}}
+        <section class="section">
+            <h3 class="section-title">Languages</h3>
+            <div class="languages-grid">
+                {{#languages}}
+                <div class="language-item">
+                    <span class="language-name">{{language}}</span>
+                    <span class="language-fluency">{{fluency}}</span>
+                </div>
+                {{/languages}}
+            </div>
+        </section>
+        {{/languages.length}}
+
+        <!-- Interests Section -->
+        {{#interests.length}}
+        <section class="section">
+            <h3 class="section-title">Hobbies & Interests</h3>
+            <div class="interests-grid">
+                {{#interests}}
+                <div class="interest-item">
+                    <h4 class="interest-name">{{name}}</h4>
+                    {{#keywords.length}}
+                    <div class="interest-keywords">
+                        {{#keywords}}
+                        <span class="keyword">{{.}}</span>
+                        {{/keywords}}
+                    </div>
+                    {{/keywords.length}}
+                </div>
+                {{/interests}}
+            </div>
+        </section>
+        {{/interests.length}}
+    </div>
+    </body>
+
+</html>

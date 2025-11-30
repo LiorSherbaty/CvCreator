@@ -1,0 +1,162 @@
+:root {
+    --theme-color: {{themeColor}};
+    --text-primary: #333333;
+    --text-secondary: #777777;
+    --background: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: var(--text-primary);
+    background: var(--background);
+    line-height: 1.8;
+}
+
+.resume {
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 30mm;
+    background: white;
+}
+
+.header {
+    margin-bottom: 40px;
+}
+
+.profile-image img {
+    display: none;
+}
+
+.name {
+    font-size: 42px;
+    font-weight: 300;
+    letter-spacing: -1px;
+    color: var(--text-primary);
+    margin-bottom: 5px;
+}
+
+.label {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.section {
+    margin-bottom: 35px;
+}
+
+.section-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--theme-color);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.entry {
+    margin-bottom: 25px;
+}
+
+.entry-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 3px;
+}
+
+.entry-subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.entry-date {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.highlights {
+    list-style: none;
+    margin-left: 0;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.highlights li:before {
+    content: '–  ';
+    color: var(--theme-color);
+}
+
+.skills-grid,
+.languages-grid,
+.interests-grid {
+    display: block;
+}
+
+.skill-item,
+.language-item,
+.interest-item {
+    margin-bottom: 10px;
+}
+
+.keyword {
+    display: inline;
+    margin-right: 6px;
+    font-size: 13px;
+}
+
+/* ONE PAGE MODE */
+body.one-page-mode {
+    font-size: 0.85em;
+}
+
+body.one-page-mode .resume {
+    padding: 20mm;
+}
+
+body.one-page-mode .section {
+    margin-bottom: 20px;
+}
+
+@media print {
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .resume {
+        padding: 20mm;
+    }
+}
+
+@media screen {
+    body {
+        background: #fafafa;
+        padding: 20px;
+    }
+
+    .resume {
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    }
+}

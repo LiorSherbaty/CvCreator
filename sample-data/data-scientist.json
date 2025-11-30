@@ -1,0 +1,255 @@
+{
+  "basics": {
+    "name": "Dr. Emily Watson",
+    "label": "Senior Data Scientist",
+    "image": "",
+    "email": "emily.watson@email.com",
+    "phone": "+1 (555) 123-9876",
+    "url": "https://emilywatson.science",
+    "summary": "PhD-qualified data scientist with 8+ years of experience applying machine learning and statistical analysis to solve complex business problems. Expertise in predictive modeling, NLP, and data visualization. Published researcher with strong communication skills.",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "Boston",
+      "countryCode": "US",
+      "region": "Massachusetts"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "emilywatson",
+        "url": "https://github.com/emilywatson"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "emilywatson-phd",
+        "url": "https://linkedin.com/in/emilywatson-phd"
+      },
+      {
+        "network": "Kaggle",
+        "username": "emilywatson",
+        "url": "https://kaggle.com/emilywatson"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "DataTech Solutions",
+      "position": "Senior Data Scientist",
+      "url": "https://datatech.com",
+      "startDate": "Jan 2020",
+      "endDate": "Present",
+      "summary": "Leading data science initiatives for predictive analytics and ML solutions.",
+      "highlights": [
+        "Developed customer churn prediction model with 92% accuracy, saving $2M annually",
+        "Built recommendation system increasing product cross-sell by 35%",
+        "Led team of 4 data scientists and mentored junior team members",
+        "Deployed ML models to production using Docker, Kubernetes, and AWS SageMaker",
+        "Presented findings to C-suite executives and translated technical concepts to business impact"
+      ]
+    },
+    {
+      "name": "FinanceCorp",
+      "position": "Data Scientist",
+      "url": "https://financecorp.com",
+      "startDate": "Jun 2018",
+      "endDate": "Dec 2019",
+      "summary": "Applied ML and statistical methods to financial data analysis.",
+      "highlights": [
+        "Created fraud detection system reducing false positives by 40%",
+        "Performed time-series forecasting for revenue prediction with 85% accuracy",
+        "Built automated data pipeline processing 10M+ transactions daily",
+        "Conducted A/B testing to optimize user engagement strategies"
+      ]
+    },
+    {
+      "name": "Research Institute",
+      "position": "Data Analyst",
+      "url": "",
+      "startDate": "Aug 2016",
+      "endDate": "May 2018",
+      "summary": "Analyzed large datasets and conducted statistical research.",
+      "highlights": [
+        "Performed statistical analysis on healthcare datasets using R and Python",
+        "Created interactive dashboards using Tableau for stakeholder reporting",
+        "Co-authored 3 peer-reviewed research papers"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Massachusetts Institute of Technology",
+      "url": "https://mit.edu",
+      "area": "Computer Science - Machine Learning",
+      "studyType": "Doctor of Philosophy (PhD)",
+      "startDate": "2012",
+      "endDate": "2016",
+      "score": ""
+    },
+    {
+      "institution": "Stanford University",
+      "url": "https://stanford.edu",
+      "area": "Statistics",
+      "studyType": "Bachelor of Science",
+      "startDate": "2008",
+      "endDate": "2012",
+      "score": "Summa Cum Laude"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Programming Languages",
+      "level": "Expert",
+      "keywords": [
+        "Python",
+        "R",
+        "SQL",
+        "Scala",
+        "Julia"
+      ]
+    },
+    {
+      "name": "Machine Learning",
+      "level": "Expert",
+      "keywords": [
+        "Scikit-learn",
+        "TensorFlow",
+        "PyTorch",
+        "XGBoost",
+        "Keras",
+        "Deep Learning",
+        "NLP",
+        "Computer Vision"
+      ]
+    },
+    {
+      "name": "Data Engineering",
+      "level": "Advanced",
+      "keywords": [
+        "Apache Spark",
+        "Hadoop",
+        "Airflow",
+        "PostgreSQL",
+        "MongoDB",
+        "ETL pipelines"
+      ]
+    },
+    {
+      "name": "Cloud & Tools",
+      "level": "Advanced",
+      "keywords": [
+        "AWS (SageMaker, S3, EC2)",
+        "Docker",
+        "Git",
+        "Jupyter",
+        "Tableau",
+        "Power BI"
+      ]
+    },
+    {
+      "name": "Statistical Analysis",
+      "level": "Expert",
+      "keywords": [
+        "Hypothesis testing",
+        "Regression analysis",
+        "Bayesian methods",
+        "Time-series analysis",
+        "Experimental design"
+      ]
+    }
+  ],
+  "volunteer": [],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native"
+    },
+    {
+      "language": "French",
+      "fluency": "Professional"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Research",
+      "keywords": [
+        "AI Ethics",
+        "Explainable AI",
+        "Healthcare ML applications"
+      ]
+    },
+    {
+      "name": "Community",
+      "keywords": [
+        "Kaggle competitions",
+        "Data science meetups",
+        "Women in Data Science"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Certified Machine Learning - Specialty",
+      "date": "2022",
+      "issuer": "Amazon Web Services",
+      "url": "https://aws.amazon.com/certification/"
+    },
+    {
+      "name": "TensorFlow Developer Certificate",
+      "date": "2021",
+      "issuer": "Google",
+      "url": "https://www.tensorflow.org/certificate"
+    },
+    {
+      "name": "Deep Learning Specialization",
+      "date": "2020",
+      "issuer": "Coursera - deeplearning.ai",
+      "url": "https://www.coursera.org/specializations/deep-learning"
+    }
+  ],
+  "publications": [
+    {
+      "name": "Novel Approaches to Interpretable Machine Learning in Healthcare",
+      "publisher": "Journal of Machine Learning Research",
+      "releaseDate": "2023",
+      "url": "https://jmlr.org/papers/v24/watson23a.html",
+      "summary": "Proposing new methods for creating interpretable ML models in medical diagnosis applications."
+    },
+    {
+      "name": "Scalable Deep Learning for Natural Language Processing",
+      "publisher": "NeurIPS Conference",
+      "releaseDate": "2021",
+      "url": "https://neurips.cc/Conferences/2021",
+      "summary": "Presenting efficient training techniques for large-scale transformer models."
+    },
+    {
+      "name": "Adversarial Robustness in Computer Vision Systems",
+      "publisher": "CVPR Conference",
+      "releaseDate": "2019",
+      "url": "https://cvpr2019.thecvf.com/",
+      "summary": "Investigating vulnerabilities in CV models and proposing defense mechanisms."
+    },
+    {
+      "name": "Bayesian Methods for A/B Testing at Scale",
+      "publisher": "KDD Conference",
+      "releaseDate": "2018",
+      "url": "https://kdd.org/kdd2018/",
+      "summary": "Developing practical Bayesian approaches for large-scale experimentation platforms."
+    }
+  ],
+  "meta": {
+    "templateName": "classic",
+    "themeColor": "#059669",
+    "onePageMode": false,
+    "sectionOrder": [
+      "basics",
+      "work",
+      "education",
+      "skills",
+      "publications",
+      "certifications",
+      "languages",
+      "interests"
+    ]
+  }
+}

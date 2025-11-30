@@ -1,0 +1,235 @@
+{
+  "basics": {
+    "name": "Sarah Chen",
+    "label": "Senior Full Stack Developer",
+    "image": "",
+    "email": "sarah.chen@email.com",
+    "phone": "+1 (555) 234-5678",
+    "url": "https://sarahchen.dev",
+    "summary": "Passionate full-stack developer with 7+ years of experience building scalable web applications. Expertise in React, Node.js, and cloud architecture. Strong advocate for clean code and test-driven development.",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "Seattle",
+      "countryCode": "US",
+      "region": "Washington"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "sarahchen",
+        "url": "https://github.com/sarahchen"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "sarahchen",
+        "url": "https://linkedin.com/in/sarahchen"
+      },
+      {
+        "network": "Twitter",
+        "username": "sarahcodes",
+        "url": "https://twitter.com/sarahcodes"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "TechCorp Inc",
+      "position": "Senior Full Stack Developer",
+      "url": "https://techcorp.com",
+      "startDate": "Jan 2021",
+      "endDate": "Present",
+      "summary": "Leading development of cloud-native SaaS platform serving 50K+ users.",
+      "highlights": [
+        "Architected microservices architecture reducing deployment time by 70%",
+        "Led team of 5 developers in migrating legacy monolith to React/Node.js stack",
+        "Implemented CI/CD pipeline using GitHub Actions and AWS, achieving 99.9% uptime",
+        "Reduced API response time by 60% through database optimization and caching",
+        "Mentored 3 junior developers and conducted weekly code review sessions"
+      ]
+    },
+    {
+      "name": "StartupHub",
+      "position": "Full Stack Developer",
+      "url": "https://startuphub.io",
+      "startDate": "Jun 2018",
+      "endDate": "Dec 2020",
+      "summary": "Built and maintained multiple client-facing web applications.",
+      "highlights": [
+        "Developed responsive e-commerce platform handling $2M+ in annual transactions",
+        "Implemented real-time chat feature using WebSockets serving 10K concurrent users",
+        "Integrated payment systems (Stripe, PayPal) with robust error handling",
+        "Created reusable component library reducing development time by 40%"
+      ]
+    },
+    {
+      "name": "Digital Solutions Ltd",
+      "position": "Junior Web Developer",
+      "url": "",
+      "startDate": "Aug 2017",
+      "endDate": "May 2018",
+      "summary": "Contributed to various web projects and learned modern development practices.",
+      "highlights": [
+        "Built RESTful APIs using Express.js and MongoDB",
+        "Developed responsive UI components using React and Material-UI",
+        "Participated in Agile sprints and daily standups"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Washington",
+      "url": "https://uw.edu",
+      "area": "Computer Science",
+      "studyType": "Bachelor of Science",
+      "startDate": "2013",
+      "endDate": "2017",
+      "score": "3.8 GPA"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Frontend Development",
+      "level": "Expert",
+      "keywords": [
+        "React",
+        "TypeScript",
+        "Next.js",
+        "Vue.js",
+        "Tailwind CSS",
+        "Redux",
+        "GraphQL"
+      ]
+    },
+    {
+      "name": "Backend Development",
+      "level": "Expert",
+      "keywords": [
+        "Node.js",
+        "Express",
+        "Python",
+        "Django",
+        "PostgreSQL",
+        "MongoDB",
+        "Redis"
+      ]
+    },
+    {
+      "name": "DevOps & Cloud",
+      "level": "Advanced",
+      "keywords": [
+        "AWS (EC2, S3, Lambda)",
+        "Docker",
+        "Kubernetes",
+        "GitHub Actions",
+        "Terraform",
+        "Nginx"
+      ]
+    },
+    {
+      "name": "Tools & Practices",
+      "level": "Advanced",
+      "keywords": [
+        "Git",
+        "Jest",
+        "Cypress",
+        "Agile/Scrum",
+        "TDD",
+        "CI/CD"
+      ]
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Code for Good",
+      "position": "Volunteer Developer",
+      "url": "https://codeforgood.org",
+      "startDate": "2019",
+      "endDate": "Present",
+      "summary": "Building websites and web applications for non-profit organizations.",
+      "highlights": [
+        "Created donation platform for local food bank, increasing online donations by 150%",
+        "Mentored students at coding bootcamp workshops",
+        "Organized monthly hackathons for social good projects"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native"
+    },
+    {
+      "language": "Mandarin Chinese",
+      "fluency": "Professional"
+    },
+    {
+      "language": "Spanish",
+      "fluency": "Intermediate"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Open Source",
+      "keywords": [
+        "Contributing to React ecosystem",
+        "Maintaining developer tools",
+        "Building CLI applications"
+      ]
+    },
+    {
+      "name": "Tech Community",
+      "keywords": [
+        "Speaking at local meetups",
+        "Writing technical blog posts",
+        "Organizing workshops"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "AWS Certified Solutions Architect - Associate",
+      "date": "2022",
+      "issuer": "Amazon Web Services",
+      "url": "https://aws.amazon.com/certification/"
+    },
+    {
+      "name": "MongoDB Certified Developer",
+      "date": "2021",
+      "issuer": "MongoDB University",
+      "url": "https://university.mongodb.com/"
+    }
+  ],
+  "publications": [
+    {
+      "name": "Building Scalable React Applications: Best Practices",
+      "publisher": "Dev.to",
+      "releaseDate": "2023",
+      "url": "https://dev.to/sarahchen/scalable-react",
+      "summary": "A comprehensive guide on architecting large-scale React applications with performance optimization techniques."
+    },
+    {
+      "name": "Microservices Migration: Lessons Learned",
+      "publisher": "Medium",
+      "releaseDate": "2022",
+      "url": "https://medium.com/@sarahchen/microservices",
+      "summary": "Case study on successfully migrating a monolithic application to microservices architecture."
+    }
+  ],
+  "meta": {
+    "templateName": "modern",
+    "themeColor": "#3b82f6",
+    "onePageMode": false,
+    "sectionOrder": [
+      "basics",
+      "work",
+      "education",
+      "skills",
+      "certifications",
+      "publications",
+      "volunteer",
+      "languages",
+      "interests"
+    ]
+  }
+}

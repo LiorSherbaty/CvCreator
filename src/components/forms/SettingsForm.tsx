@@ -1,0 +1,221 @@
+import { useResumeStore } from '../../store';
+import { Palette } from 'lucide-react';
+
+const templates = [
+    { id: 'modern', name: 'Modern', description: 'Clean, professional, two-column layout' },
+    { id: 'classic', name: 'Classic', description: 'Traditional, single-column, formal style' },
+    { id: 'minimal', name: 'Minimal', description: 'Ultra-clean, lots of white space' },
+    { id: 'creative', name: 'Creative', description: 'Bold colors, unique layout' },
+];
+
+export function SettingsForm() {
+    const resume = useResumeStore((state) => state.resume);
+    const updateSection = useResumeStore((state) => state.updateSection);
+
+    return (
+        <div className="space-y-6">
+            {/* Template Selection */}
+            <div>
+                <label className="block text-sm font-medium text-gray-700 mb-3">
+                    <Palette className="w-4 h-4 inline mr-1" />
+                    CV Template - Choose Your Style
+                </label>
+                <div className="grid grid-cols-1 gap-4">
+                    {templates.map((template) => (
+                        <button
+                            key={template.id}
+                            onClick={() => updateSection('meta', { templateName: template.id })}
+                            className={`p-4 border-2 rounded-lg text-left transition-all ${resume.meta.templateName === template.id
+                                    ? 'border-blue-600 bg-blue-50 shadow-md'
+                                    : 'border-gray-200 hover:border-blue-300 hover:shadow-sm'
+                                }`}
+                        >
+                            <div className="flex gap-4">
+                                {/* Visual Preview Card */}
+                                <div className={`w-32 h-40 border border-gray-300 rounded overflow-hidden flex-shrink-0 ${template.id === 'modern' ? 'bg-white' :
+                                        template.id === 'classic' ? 'bg-gray-50' :
+                                            template.id === 'minimal' ? 'bg-white' :
+                                                'bg-gradient-to-br from-blue-500 to-purple-500'
+                                    }`}>
+                                    {/* Modern Preview */}
+                                    {template.id === 'modern' && (
+                                        <div className="p-2 text-[4px] leading-tight">
+                                            <div className="flex gap-1 mb-1 pb-1 border-b border-blue-400">
+                                                <div className="w-4 h-4 rounded-full bg-gray-300"></div>
+                                                <div>
+                                                    <div className="h-1 w-12 bg-blue-600 mb-0.5"></div>
+                                                    <div className="h-0.5 w-10 bg-gray-400"></div>
+                                                </div>
+                                            </div>
+                                            <div className="mb-1">
+                                                <div className="h-1 w-8 bg-blue-600 mb-0.5"></div>
+                                                <div className="h-0.5 w-full bg-gray-300 mb-0.5"></div>
+                                                <div className="h-0.5 w-full bg-gray-300"></div>
+                                            </div>
+                                            <div className="flex gap-1">
+                                                <div className="flex-1">
+                                                    <div className="h-0.5 w-full bg-blue-600 mb-0.5"></div>
+                                                    <div className="px-1 py-0.5 bg-blue-100 rounded-sm mb-0.5">
+                                                        <div className="h-0.5 w-full bg-gray-400"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Classic Preview */}
+                                    {template.id === 'classic' && (
+                                        <div className="p-2 text-[4px] leading-tight text-center">
+                                            <div className="mb-1">
+                                                <div className="h-1.5 w-16 bg-gray-800 mx-auto mb-0.5"></div>
+                                                <div className="h-0.5 w-12 bg-gray-600 mx-auto mb-0.5"></div>
+                                                <div className="h-0.5 w-14 bg-gray-500 mx-auto"></div>
+                                            </div>
+                                            <div className="border-t border-gray-700 mb-1 pb-1">
+                                                <div className="h-0.5 w-10 bg-gray-800 mx-auto mb-0.5 mt-1"></div>
+                                                <div className="h-0.5 w-full bg-gray-400 mb-0.5"></div>
+                                                <div className="h-0.5 w-full bg-gray-400"></div>
+                                            </div>
+                                            <div className="h-0.5 w-10 bg-gray-800 mx-auto mb-0.5"></div>
+                                        </div>
+                                    )}
+
+                                    {/* Minimal Preview */}
+                                    {template.id === 'minimal' && (
+                                        <div className="p-3 text-[4px] leading-relaxed">
+                                            <div className="mb-2">
+                                                <div className="h-1.5 w-14 bg-gray-400 mb-1"></div>
+                                                <div className="h-0.5 w-10 bg-gray-300 mb-1"></div>
+                                                <div className="h-0.5 w-12 bg-gray-300"></div>
+                                            </div>
+                                            <div className="mb-2">
+                                                <div className="h-0.5 w-8 bg-gray-500 mb-1"></div>
+                                                <div className="h-0.5 w-full bg-gray-200 mb-0.5"></div>
+                                                <div className="h-0.5 w-full bg-gray-200"></div>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Creative Preview */}
+                                    {template.id === 'creative' && (
+                                        <div className="text-[4px] leading-tight">
+                                            <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 text-white mb-1">
+                                                <div className="flex gap-1 items-center mb-0.5">
+                                                    <div className="w-3 h-3 rounded-full bg-white border border-purple-300"></div>
+                                                    <div>
+                                                        <div className="h-1 w-10 bg-white mb-0.5"></div>
+                                                        <div className="h-0.5 w-8 bg-purple-200"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="p-2">
+                                                <div className="border-l-2 border-blue-600 pl-1 mb-1">
+                                                    <div className="h-0.5 w-8 bg-blue-600 mb-0.5"></div>
+                                                    <div className="h-0.5 w-full bg-gray-300 mb-0.5"></div>
+                                                </div>
+                                                <div className="flex gap-0.5">
+                                                    <div className="px-1 py-0.5 bg-blue-500 rounded-sm">
+                                                        <div className="h-0.5 w-3 bg-white"></div>
+                                                    </div>
+                                                    <div className="px-1 py-0.5 bg-purple-500 rounded-sm">
+                                                        <div className="h-0.5 w-3 bg-white"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+
+                                {/* Template Info */}
+                                <div className="flex-1">
+                                    <div className="font-semibold text-gray-800 text-base mb-1">{template.name}</div>
+                                    <div className="text-sm text-gray-600 mb-2">{template.description}</div>
+                                    <div className="flex flex-wrap gap-1">
+                                        {template.id === 'modern' && (
+                                            <>
+                                                <span className="text-xs px-2 py-0.5 bg-blue-100 text-blue-700 rounded">Professional</span>
+                                                <span className="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded">ATS-Friendly</span>
+                                            </>
+                                        )}
+                                        {template.id === 'classic' && (
+                                            <>
+                                                <span className="text-xs px-2 py-0.5 bg-gray-100 text-gray-700 rounded">Traditional</span>
+                                                <span className="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded">ATS-Friendly</span>
+                                            </>
+                                        )}
+                                        {template.id === 'minimal' && (
+                                            <>
+                                                <span className="text-xs px-2 py-0.5 bg-purple-100 text-purple-700 rounded">Clean</span>
+                                                <span className="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded">ATS-Friendly</span>
+                                            </>
+                                        )}
+                                        {template.id === 'creative' && (
+                                            <>
+                                                <span className="text-xs px-2 py-0.5 bg-pink-100 text-pink-700 rounded">Bold</span>
+                                                <span className="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded">ATS-Friendly</span>
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* Selected Indicator */}
+                                {resume.meta.templateName === template.id && (
+                                    <div className="flex items-center">
+                                        <div className="w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center">
+                                            <svg className="w-4 h-4 text-white" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path d="M5 13l4 4L19 7"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </button>
+                    ))}
+                </div>
+            </div>
+
+            {/* Theme Color */}
+            <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Theme Color
+                </label>
+                <div className="flex items-center gap-3">
+                    <input
+                        type="color"
+                        value={resume.meta.themeColor}
+                        onChange={(e) => updateSection('meta', { themeColor: e.target.value })}
+                        className="w-20 h-10 border border-gray-300 rounded cursor-pointer"
+                    />
+                    <span className="text-sm text-gray-600">{resume.meta.themeColor}</span>
+                </div>
+            </div>
+
+            {/* One Page Mode */}
+            <div className="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                <div className="flex items-center justify-between">
+                    <div>
+                        <h4 className="font-semibold text-gray-800">One Page Mode</h4>
+                        <p className="text-sm text-gray-600">
+                            Automatically adjust font size and spacing to fit CV on one page
+                        </p>
+                    </div>
+                    <button
+                        onClick={() => updateSection('meta', { onePageMode: !resume.meta.onePageMode })}
+                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${resume.meta.onePageMode ? 'bg-blue-600' : 'bg-gray-300'
+                            }`}
+                    >
+                        <span
+                            className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${resume.meta.onePageMode ? 'translate-x-6' : 'translate-x-1'
+                                }`}
+                        />
+                    </button>
+                </div>
+                {resume.meta.onePageMode && (
+                    <div className="mt-3 p-2 bg-yellow-50 border border-yellow-200 rounded text-sm text-yellow-800">
+                        ⚠️ Note: If content is too much to fit on one page, a warning will appear during export.
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}

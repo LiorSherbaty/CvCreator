@@ -1,0 +1,228 @@
+{
+  "basics": {
+    "name": "Marcus Rodriguez",
+    "label": "Senior UX/UI Designer",
+    "image": "",
+    "email": "marcus.rodriguez@email.com",
+    "phone": "+1 (555) 876-5432",
+    "url": "https://marcusdesigns.co",
+    "summary": "Award-winning UX/UI designer with 6+ years of experience crafting intuitive digital experiences. Specialized in user research, prototyping, and design systems. Passionate about creating accessible and inclusive designs that delight users.",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "Austin",
+      "countryCode": "US",
+      "region": "Texas"
+    },
+    "profiles": [
+      {
+        "network": "Dribbble",
+        "username": "marcusrod",
+        "url": "https://dribbble.com/marcusrod"
+      },
+      {
+        "network": "Behance",
+        "username": "marcusrodriguez",
+        "url": "https://behance.net/marcusrodriguez"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "marcusrodriguez",
+        "url": "https://linkedin.com/in/marcusrodriguez"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "DesignHub Inc",
+      "position": "Senior UX/UI Designer",
+      "url": "https://designhub.com",
+      "startDate": "Mar 2021",
+      "endDate": "Present",
+      "summary": "Leading design initiatives for enterprise SaaS products.",
+      "highlights": [
+        "Led redesign of flagship product, increasing user satisfaction by 45% (NPS score)",
+        "Established and maintained comprehensive design system used by 20+ designers",
+        "Conducted user research with 100+ participants, driving data-informed decisions",
+        "Collaborated with engineering team to ensure pixel-perfect implementation",
+        "Mentored 2 junior designers and led weekly design critique sessions"
+      ]
+    },
+    {
+      "name": "Creative Studios",
+      "position": "UX Designer",
+      "url": "https://creativestudios.com",
+      "startDate": "Jun 2019",
+      "endDate": "Feb 2021",
+      "summary": "Designed web and mobile applications for diverse clients.",
+      "highlights": [
+        "Designed mobile app for fintech startup, achieving 4.8-star rating on App Store",
+        "Created wireframes and high-fidelity prototypes using Figma and Adobe XD",
+        "Conducted A/B testing that improved conversion rates by 30%",
+        "Presented design proposals to stakeholders and incorporated feedback"
+      ]
+    },
+    {
+      "name": "Digital Agency Co",
+      "position": "Junior Designer",
+      "url": "",
+      "startDate": "Aug 2018",
+      "endDate": "May 2019",
+      "summary": "Supported design team on various client projects.",
+      "highlights": [
+        "Created marketing materials and landing pages for e-commerce clients",
+        "Assisted in user testing sessions and documented findings",
+        "Developed responsive website designs for small business clients"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Rhode Island School of Design",
+      "url": "https://risd.edu",
+      "area": "Graphic Design",
+      "studyType": "Bachelor of Fine Arts",
+      "startDate": "2014",
+      "endDate": "2018",
+      "score": "3.7 GPA"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Design Tools",
+      "level": "Expert",
+      "keywords": [
+        "Figma",
+        "Adobe XD",
+        "Sketch",
+        "Adobe Creative Suite",
+        "Photoshop",
+        "Illustrator",
+        "InVision"
+      ]
+    },
+    {
+      "name": "UX Research",
+      "level": "Advanced",
+      "keywords": [
+        "User interviews",
+        "Usability testing",
+        "A/B testing",
+        "Persona development",
+        "Journey mapping",
+        "Card sorting"
+      ]
+    },
+    {
+      "name": "Design Skills",
+      "level": "Expert",
+      "keywords": [
+        "Wireframing",
+        "Prototyping",
+        "Design systems",
+        "Interaction design",
+        "Visual design",
+        "Responsive design"
+      ]
+    },
+    {
+      "name": "Frontend Basics",
+      "level": "Intermediate",
+      "keywords": [
+        "HTML/CSS",
+        "Basic JavaScript",
+        "Tailwind CSS",
+        "Accessibility (WCAG)"
+      ]
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Design for Social Good",
+      "position": "Volunteer Designer",
+      "url": "https://designforsocialgood.org",
+      "startDate": "2020",
+      "endDate": "Present",
+      "summary": "Providing design services for non-profit organizations.",
+      "highlights": [
+        "Redesigned website for animal shelter, increasing adoption inquiries by 60%",
+        "Created brand identity for environmental conservation group",
+        "Hosted workshop on accessible design practices for local community"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native"
+    },
+    {
+      "language": "Spanish",
+      "fluency": "Fluent"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Design Community",
+      "keywords": [
+        "Speaking at design conferences",
+        "Organizing local design meetups",
+        "Contributing to design blogs"
+      ]
+    },
+    {
+      "name": "Creative Hobbies",
+      "keywords": [
+        "Photography",
+        "Typography exploration",
+        "Digital illustration"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Google UX Design Professional Certificate",
+      "date": "2020",
+      "issuer": "Google",
+      "url": "https://grow.google/certificates/ux-design/"
+    },
+    {
+      "name": "Certified Usability Analyst (CUA)",
+      "date": "2022",
+      "issuer": "Human Factors International",
+      "url": "https://www.humanfactors.com/"
+    }
+  ],
+  "publications": [
+    {
+      "name": "The Future of Inclusive Design",
+      "publisher": "UX Collective",
+      "releaseDate": "2023",
+      "url": "https://uxdesign.cc/inclusive-design-future",
+      "summary": "Exploring how inclusive design principles create better experiences for all users, not just those with disabilities."
+    },
+    {
+      "name": "Building Scalable Design Systems",
+      "publisher": "Smashing Magazine",
+      "releaseDate": "2022",
+      "url": "https://smashingmagazine.com/design-systems",
+      "summary": "A practical guide to creating and maintaining design systems that grow with your product."
+    }
+  ],
+  "meta": {
+    "templateName": "creative",
+    "themeColor": "#8b5cf6",
+    "onePageMode": false,
+    "sectionOrder": [
+      "basics",
+      "work",
+      "skills",
+      "education",
+      "certifications",
+      "publications",
+      "volunteer",
+      "languages",
+      "interests"
+    ]
+  }
+}

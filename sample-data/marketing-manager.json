@@ -1,0 +1,230 @@
+{
+  "basics": {
+    "name": "Alex Thompson",
+    "label": "Digital Marketing Manager",
+    "image": "",
+    "email": "alex.thompson@email.com",
+    "phone": "+1 (555) 456-7890",
+    "url": "https://alexthompson.marketing",
+    "summary": "Results-driven digital marketing professional with 5+ years of experience developing and executing data-driven marketing strategies. Proven track record of increasing brand awareness, driving customer acquisition, and optimizing ROI across multiple channels.",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "New York",
+      "countryCode": "US",
+      "region": "New York"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "alexthompson",
+        "url": "https://linkedin.com/in/alexthompson"
+      },
+      {
+        "network": "Twitter",
+        "username": "alexmarkets",
+        "url": "https://twitter.com/alexmarkets"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "GrowthTech Inc",
+      "position": "Senior Digital Marketing Manager",
+      "url": "https://growthtech.com",
+      "startDate": "Feb 2021",
+      "endDate": "Present",
+      "summary": "Leading digital marketing strategy and execution for B2B SaaS company.",
+      "highlights": [
+        "Increased organic traffic by 250% through SEO optimization and content strategy",
+        "Managed $500K annual marketing budget across paid channels (Google Ads, LinkedIn, Facebook)",
+        "Improved conversion rate from 2% to 5.5% through landing page optimization and A/B testing",
+        "Grew email subscriber list from 15K to 75K in 18 months",
+        "Led team of 3 marketing specialists and collaborated with sales team on lead generation"
+      ]
+    },
+    {
+      "name": "BrandWorks Agency",
+      "position": "Digital Marketing Specialist",
+      "url": "https://brandworks.co",
+      "startDate": "Jul 2019",
+      "endDate": "Jan 2021",
+      "summary": "Managed digital marketing campaigns for diverse client portfolio.",
+      "highlights": [
+        "Executed social media campaigns reaching 2M+ users and achieving 8% engagement rate",
+        "Created content marketing strategy increasing client's organic leads by 180%",
+        "Managed Google Ads campaigns with average ROAS of 4.5x",
+        "Developed email marketing campaigns with 35% open rate (15% above industry average)",
+        "Analyzed campaign performance using Google Analytics and provided actionable insights"
+      ]
+    },
+    {
+      "name": "StartupCo",
+      "position": "Marketing Coordinator",
+      "url": "",
+      "startDate": "Jun 2018",
+      "endDate": "Jun 2019",
+      "summary": "Supported marketing team with campaign execution and content creation.",
+      "highlights": [
+        "Managed company blog, publishing 3-4 articles weekly",
+        "Coordinated social media posting across multiple platforms",
+        "Assisted in organizing 5 successful webinar events with 500+ attendees each"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "New York University",
+      "url": "https://nyu.edu",
+      "area": "Marketing",
+      "studyType": "Bachelor of Science",
+      "startDate": "2014",
+      "endDate": "2018",
+      "score": "3.6 GPA"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Digital Marketing",
+      "level": "Expert",
+      "keywords": [
+        "SEO/SEM",
+        "Content Marketing",
+        "Email Marketing",
+        "Social Media Marketing",
+        "Marketing Automation",
+        "Growth Hacking"
+      ]
+    },
+    {
+      "name": "Paid Advertising",
+      "level": "Advanced",
+      "keywords": [
+        "Google Ads",
+        "Facebook Ads",
+        "LinkedIn Ads",
+        "Display Advertising",
+        "Retargeting",
+        "PPC Optimization"
+      ]
+    },
+    {
+      "name": "Analytics & Tools",
+      "level": "Advanced",
+      "keywords": [
+        "Google Analytics",
+        "Google Tag Manager",
+        "HubSpot",
+        "Salesforce",
+        "Mailchimp",
+        "SEMrush",
+        "Ahrefs"
+      ]
+    },
+    {
+      "name": "Content & Creative",
+      "level": "Intermediate",
+      "keywords": [
+        "Copywriting",
+        "Content Strategy",
+        "Adobe Creative Suite",
+        "Canva",
+        "Video Editing"
+      ]
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Marketing Mentors",
+      "position": "Mentor",
+      "url": "https://marketingmentors.org",
+      "startDate": "2022",
+      "endDate": "Present",
+      "summary": "Mentoring aspiring marketers and career changers.",
+      "highlights": [
+        "Conducted monthly one-on-one mentorship sessions",
+        "Reviewed portfolios and provided career guidance",
+        "Hosted workshops on digital marketing fundamentals"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native"
+    },
+    {
+      "language": "German",
+      "fluency": "Intermediate"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Marketing Trends",
+      "keywords": [
+        "AI in Marketing",
+        "Podcast listening",
+        "Marketing conferences"
+      ]
+    },
+    {
+      "name": "Hobbies",
+      "keywords": [
+        "Travel blogging",
+        "Photography",
+        "Running marathons"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Google Analytics Individual Qualification",
+      "date": "2023",
+      "issuer": "Google",
+      "url": "https://skillshop.withgoogle.com"
+    },
+    {
+      "name": "HubSpot Content Marketing Certification",
+      "date": "2022",
+      "issuer": "HubSpot Academy",
+      "url": "https://academy.hubspot.com"
+    },
+    {
+      "name": "Facebook Blueprint Certification",
+      "date": "2021",
+      "issuer": "Meta",
+      "url": "https://www.facebook.com/business/learn"
+    },
+    {
+      "name": "Google Ads Search Certification",
+      "date": "2020",
+      "issuer": "Google",
+      "url": "https://skillshop.withgoogle.com"
+    }
+  ],
+  "publications": [
+    {
+      "name": "The Future of B2B Marketing: AI and Personalization",
+      "publisher": "Marketing Land",
+      "releaseDate": "2023",
+      "url": "https://marketingland.com/b2b-ai-personalization",
+      "summary": "Exploring how artificial intelligence is transforming B2B marketing strategies and customer experiences."
+    }
+  ],
+  "meta": {
+    "templateName": "minimal",
+    "themeColor": "#ec4899",
+    "onePageMode": true,
+    "sectionOrder": [
+      "basics",
+      "work",
+      "skills",
+      "certifications",
+      "education",
+      "publications",
+      "volunteer",
+      "languages",
+      "interests"
+    ]
+  }
+}
