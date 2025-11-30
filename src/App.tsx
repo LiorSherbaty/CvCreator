@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { Toolbar } from './components/Toolbar';
 import { Editor } from './components/Editor';
 import { Preview } from './components/Preview';
+import { Footer } from './components/Footer';
 import { useResumeStore } from './store';
 import { renderTemplate } from './templateRenderer';
 
@@ -122,6 +123,8 @@ function App() {
                     <Preview />
                 </div>
             </div>
+
+            <Footer />
 
             {/* Hidden file input for JSON import */}
             <input
