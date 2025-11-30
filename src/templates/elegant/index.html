@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{basics.name}} - {{basics.label}}</title>
+    <style>
+        {{{styles}}}
+    </style>
+</head>
+<body{{#meta.onePageMode}} class="one-page-mode" {{/meta.onePageMode}}>
+    <div class="resume-container">
+        <header class="header">
+            <h1 class="name">{{basics.name}}</h1>
+            <h2 class="label">{{basics.label}}</h2>
+            <div class="contact-line">
+                {{#basics.location.city}}
+                <span>{{basics.location.city}}</span>
+                {{/basics.location.city}}
+                {{#basics.phone}}
+                <span class="dot">•</span>
+                <span>{{basics.phone}}</span>
+                {{/basics.phone}}
+                {{#basics.email}}
+                <span class="dot">•</span>
+                <span>{{basics.email}}</span>
+                {{/basics.email}}
+                {{#basics.url}}
+                <span class="dot">•</span>
+                <span>{{basics.url}}</span>
+                {{/basics.url}}
+            </div>
+            {{#basics.profiles.length}}
+            <div class="social-line">
+                {{#basics.profiles}}
+                <a href="{{url}}">{{network}}</a>
+                {{/basics.profiles}}
+            </div>
+            {{/basics.profiles.length}}
+        </header>
+
+        {{#basics.summary}}
+        <section class="section">
+            <div class="section-header">
+                <span class="line"></span>
+                <h3 class="section-title">Profile</h3>
+                <span class="line"></span>
+            </div>
+            <p class="text-center summary">{{basics.summary}}</p>
+        </section>
+        {{/basics.summary}}
+
+        {{#work.length}}
+        <section class="section">
+            <div class="section-header">
+                <span class="line"></span>
+                <h3 class="section-title">Experience</h3>
+                <span class="line"></span>
+            </div>
+            {{#work}}
+            <div class="entry">
+                <h4 class="entry-title">{{position}}</h4>
+                <div class="entry-subtitle">{{name}} | {{startDate}} - {{endDate}}</div>
+                {{#summary}}
+                <p class="entry-summary">{{summary}}</p>
+                {{/summary}}
+                {{#highlights.length}}
+                <ul class="highlights">
+                    {{#highlights}}
+                    <li>{{.}}</li>
+                    {{/highlights}}
+                </ul>
+                {{/highlights.length}}
+            </div>
+            {{/work}}
+        </section>
+        {{/work.length}}
+
+        {{#education.length}}
+        <section class="section">
+            <div class="section-header">
+                <span class="line"></span>
+                <h3 class="section-title">Education</h3>
+                <span class="line"></span>
+            </div>
+            {{#education}}
+            <div class="entry">
+                <h4 class="entry-title">{{institution}}</h4>
+                <div class="entry-subtitle">{{studyType}} in {{area}}, {{startDate}} - {{endDate}}</div>
+            </div>
+            {{/education}}
+        </section>
+        {{/education.length}}
+
+        {{#skills.length}}
+        <section class="section">
+            <div class="section-header">
+                <span class="line"></span>
+                <h3 class="section-title">Skills</h3>
+                <span class="line"></span>
+            </div>
+            <div class="skills-center">
+                {{#skills}}
+                <span class="skill-item">{{name}}</span>
+                {{/skills}}
+            </div>
+        </section>
+        {{/skills.length}}
+    </div>
+</body>
+</html>

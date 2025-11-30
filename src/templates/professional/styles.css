@@ -1,0 +1,247 @@
+:root {
+    --sidebar-bg: #2c3e50;
+    --sidebar-text: #ecf0f1;
+    --main-bg: #ffffff;
+    --text-color: #34495e;
+    --accent-color: {{themeColor}}; /* Injected by Mustache */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: 14px; /* Base font size */
+}
+
+/* One Page Mode Adjustments */
+body.one-page-mode {
+    font-size: 12px;
+}
+body.one-page-mode .resume-container {
+    min-height: auto; /* Allow auto height if content is short */
+}
+body.one-page-mode h1.name {
+    font-size: 2.5em;
+}
+body.one-page-mode h2.label {
+    font-size: 1.2em;
+}
+body.one-page-mode .section {
+    margin-bottom: 1.5em;
+}
+
+.resume-container {
+    display: flex;
+    max-width: 210mm;
+    min-height: 297mm; /* A4 height */
+    margin: 0 auto;
+    background-color: var(--main-bg);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 32%;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    padding: 2rem;
+}
+
+.profile-image-container {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(255,255,255,0.1);
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sidebar-title {
+    font-size: 1.1em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: var(--accent-color); /* Use theme color for sidebar titles */
+    filter: brightness(1.5); /* Make it pop against dark bg */
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    font-size: 0.9em;
+    word-break: break-word;
+}
+
+.contact-item .icon {
+    margin-right: 10px;
+    width: 16px;
+    text-align: center;
+    opacity: 0.8;
+}
+
+.contact-item .text, .social-link {
+    color: var(--sidebar-text);
+    text-decoration: none;
+}
+
+.sidebar-section {
+    margin-bottom: 2rem;
+}
+
+.skill-item {
+    margin-bottom: 0.8rem;
+}
+
+.skill-name {
+    font-size: 0.9em;
+    margin-bottom: 0.2rem;
+}
+
+.skill-level-bar {
+    height: 4px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 2px;
+}
+
+.skill-level-fill {
+    height: 100%;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+.interests-list, .highlights {
+    list-style-position: inside;
+    padding-left: 0;
+}
+.interests-list li {
+    margin-bottom: 0.4rem;
+    font-size: 0.9em;
+}
+
+/* Main Content Styles */
+.main-content {
+    width: 68%;
+    padding: 3rem;
+}
+
+.header {
+    margin-bottom: 3rem;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 2rem;
+}
+
+.name {
+    font-size: 3em;
+    font-weight: 700;
+    color: var(--sidebar-bg); /* Dark color for name */
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+.label {
+    font-size: 1.4em;
+    font-weight: 400;
+    color: var(--accent-color);
+}
+
+.section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--sidebar-bg);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.entry {
+    margin-bottom: 1.5rem;
+}
+
+.entry:last-child {
+    margin-bottom: 0;
+}
+
+.entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.3rem;
+}
+
+.entry-position {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.entry-company {
+    font-size: 1em;
+    font-style: italic;
+    color: #7f8c8d;
+    margin-bottom: 0.5rem;
+}
+
+.entry-date {
+    font-size: 0.9em;
+    color: #95a5a6;
+    white-space: nowrap;
+}
+
+.entry-summary {
+    margin-bottom: 0.8rem;
+    text-align: justify;
+}
+
+.highlights {
+    list-style-type: disc;
+    padding-left: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+.highlights li {
+    margin-bottom: 0.3rem;
+}
+
+.language-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9em;
+}
+
+.language-fluency {
+    opacity: 0.7;
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: none;
+    }
+    .resume-container {
+        box-shadow: none;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+    }
+}

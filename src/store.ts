@@ -184,7 +184,7 @@ export const useResumeStore = create<ResumeStore>()(
         {
             name: 'cv-creator-storage', // localStorage key
             version: 1,
-            migrate: (persistedState: any, version: number) => {
+            migrate: (persistedState: any, _version: number) => {
                 // Ensure sectionOrder exists for backward compatibility
                 if (persistedState && persistedState.resume && persistedState.resume.meta) {
                     if (!Array.isArray(persistedState.resume.meta.sectionOrder)) {

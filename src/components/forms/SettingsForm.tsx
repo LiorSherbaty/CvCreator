@@ -6,6 +6,11 @@ const templates = [
     { id: 'classic', name: 'Classic', description: 'Traditional, single-column, formal style' },
     { id: 'minimal', name: 'Minimal', description: 'Ultra-clean, lots of white space' },
     { id: 'creative', name: 'Creative', description: 'Bold colors, unique layout' },
+    { id: 'professional', name: 'Professional', description: 'Dark sidebar, high contrast, authoritative' },
+    { id: 'ats', name: 'ATS Optimized', description: 'Simple, text-focused, machine-readable' },
+    { id: 'corporate', name: 'Corporate', description: 'Structured, business-oriented, grey accents' },
+    { id: 'elegant', name: 'Elegant', description: 'Centered, serif typography, sophisticated' },
+    { id: 'compact', name: 'Compact', description: 'Information dense, efficient layout' },
 ];
 
 export function SettingsForm() {
@@ -32,11 +37,13 @@ export function SettingsForm() {
                         >
                             <div className="flex gap-4">
                                 {/* Visual Preview Card */}
-                                <div className={`w-32 h-40 border border-gray-300 rounded overflow-hidden flex-shrink-0 ${template.id === 'modern' ? 'bg-white' :
-                                        template.id === 'classic' ? 'bg-gray-50' :
-                                            template.id === 'minimal' ? 'bg-white' :
-                                                'bg-gradient-to-br from-blue-500 to-purple-500'
-                                    }`}>
+                                <div className={`w-32 h-40 border border-gray-300 rounded overflow-hidden flex-shrink-0 ${
+                                    template.id === 'modern' ? 'bg-white' :
+                                    template.id === 'classic' ? 'bg-gray-50' :
+                                    template.id === 'minimal' ? 'bg-white' :
+                                    template.id === 'creative' ? 'bg-gradient-to-br from-blue-500 to-purple-500' :
+                                    'bg-white'
+                                }`}>
                                     {/* Modern Preview */}
                                     {template.id === 'modern' && (
                                         <div className="p-2 text-[4px] leading-tight">
@@ -52,14 +59,6 @@ export function SettingsForm() {
                                                 <div className="h-0.5 w-full bg-gray-300 mb-0.5"></div>
                                                 <div className="h-0.5 w-full bg-gray-300"></div>
                                             </div>
-                                            <div className="flex gap-1">
-                                                <div className="flex-1">
-                                                    <div className="h-0.5 w-full bg-blue-600 mb-0.5"></div>
-                                                    <div className="px-1 py-0.5 bg-blue-100 rounded-sm mb-0.5">
-                                                        <div className="h-0.5 w-full bg-gray-400"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     )}
 
@@ -69,14 +68,11 @@ export function SettingsForm() {
                                             <div className="mb-1">
                                                 <div className="h-1.5 w-16 bg-gray-800 mx-auto mb-0.5"></div>
                                                 <div className="h-0.5 w-12 bg-gray-600 mx-auto mb-0.5"></div>
-                                                <div className="h-0.5 w-14 bg-gray-500 mx-auto"></div>
                                             </div>
                                             <div className="border-t border-gray-700 mb-1 pb-1">
                                                 <div className="h-0.5 w-10 bg-gray-800 mx-auto mb-0.5 mt-1"></div>
                                                 <div className="h-0.5 w-full bg-gray-400 mb-0.5"></div>
-                                                <div className="h-0.5 w-full bg-gray-400"></div>
                                             </div>
-                                            <div className="h-0.5 w-10 bg-gray-800 mx-auto mb-0.5"></div>
                                         </div>
                                     )}
 
@@ -86,12 +82,10 @@ export function SettingsForm() {
                                             <div className="mb-2">
                                                 <div className="h-1.5 w-14 bg-gray-400 mb-1"></div>
                                                 <div className="h-0.5 w-10 bg-gray-300 mb-1"></div>
-                                                <div className="h-0.5 w-12 bg-gray-300"></div>
                                             </div>
                                             <div className="mb-2">
                                                 <div className="h-0.5 w-8 bg-gray-500 mb-1"></div>
                                                 <div className="h-0.5 w-full bg-gray-200 mb-0.5"></div>
-                                                <div className="h-0.5 w-full bg-gray-200"></div>
                                             </div>
                                         </div>
                                     )}
@@ -104,7 +98,6 @@ export function SettingsForm() {
                                                     <div className="w-3 h-3 rounded-full bg-white border border-purple-300"></div>
                                                     <div>
                                                         <div className="h-1 w-10 bg-white mb-0.5"></div>
-                                                        <div className="h-0.5 w-8 bg-purple-200"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -113,13 +106,109 @@ export function SettingsForm() {
                                                     <div className="h-0.5 w-8 bg-blue-600 mb-0.5"></div>
                                                     <div className="h-0.5 w-full bg-gray-300 mb-0.5"></div>
                                                 </div>
-                                                <div className="flex gap-0.5">
-                                                    <div className="px-1 py-0.5 bg-blue-500 rounded-sm">
-                                                        <div className="h-0.5 w-3 bg-white"></div>
-                                                    </div>
-                                                    <div className="px-1 py-0.5 bg-purple-500 rounded-sm">
-                                                        <div className="h-0.5 w-3 bg-white"></div>
-                                                    </div>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Professional Preview */}
+                                    {template.id === 'professional' && (
+                                        <div className="flex h-full text-[4px]">
+                                            <div className="w-1/3 bg-gray-800 p-1 flex flex-col gap-1">
+                                                <div className="w-4 h-4 rounded-full bg-gray-600 mx-auto mb-1"></div>
+                                                <div className="h-0.5 w-6 bg-gray-600 mx-auto"></div>
+                                                <div className="h-0.5 w-5 bg-gray-600 mx-auto"></div>
+                                                <div className="h-0.5 w-full bg-gray-600 mt-2"></div>
+                                                <div className="h-0.5 w-full bg-gray-600"></div>
+                                            </div>
+                                            <div className="w-2/3 bg-white p-1">
+                                                <div className="h-1.5 w-12 bg-gray-800 mb-0.5"></div>
+                                                <div className="h-0.5 w-8 bg-blue-600 mb-1"></div>
+                                                <div className="h-0.5 w-full bg-gray-200 mb-0.5"></div>
+                                                <div className="h-0.5 w-full bg-gray-200 mb-0.5"></div>
+                                                <div className="h-0.5 w-full bg-gray-200 mb-1"></div>
+                                                <div className="h-1 w-10 bg-gray-800 mb-0.5"></div>
+                                                <div className="h-0.5 w-full bg-gray-200"></div>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* ATS Preview */}
+                                    {template.id === 'ats' && (
+                                        <div className="p-2 text-[4px] leading-normal bg-white h-full">
+                                            <div className="text-center mb-1">
+                                                <div className="h-1.5 w-14 bg-black mx-auto mb-0.5"></div>
+                                                <div className="h-0.5 w-20 bg-gray-600 mx-auto"></div>
+                                            </div>
+                                            <div className="mb-1">
+                                                <div className="h-0.5 w-10 bg-black mb-0.5 border-b border-black"></div>
+                                                <div className="h-0.5 w-full bg-gray-400 mb-0.5"></div>
+                                                <div className="h-0.5 w-full bg-gray-400"></div>
+                                            </div>
+                                            <div>
+                                                <div className="h-0.5 w-10 bg-black mb-0.5 border-b border-black"></div>
+                                                <div className="h-0.5 w-full bg-gray-400 mb-0.5"></div>
+                                                <div className="h-0.5 w-full bg-gray-400"></div>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Corporate Preview */}
+                                    {template.id === 'corporate' && (
+                                        <div className="h-full text-[4px] bg-white">
+                                            <div className="h-4 w-full bg-blue-700 mb-0.5 flex items-center px-1">
+                                                <div className="w-2 h-2 rounded-full bg-white mr-1"></div>
+                                                <div className="h-1 w-10 bg-white"></div>
+                                            </div>
+                                            <div className="flex h-full">
+                                                <div className="w-1/4 bg-gray-100 p-1 h-28">
+                                                    <div className="h-0.5 w-full bg-gray-300 mb-0.5"></div>
+                                                    <div className="h-0.5 w-full bg-gray-300"></div>
+                                                </div>
+                                                <div className="w-3/4 p-1">
+                                                    <div className="h-1 w-8 bg-blue-700 mb-0.5"></div>
+                                                    <div className="h-0.5 w-full bg-gray-300 mb-0.5"></div>
+                                                    <div className="h-0.5 w-full bg-gray-300"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Elegant Preview */}
+                                    {template.id === 'elegant' && (
+                                        <div className="p-2 text-[4px] leading-relaxed bg-white h-full text-center">
+                                            <div className="mb-2">
+                                                <div className="h-1.5 w-16 bg-black mx-auto mb-0.5"></div>
+                                                <div className="h-0.5 w-10 bg-gray-500 mx-auto italic"></div>
+                                            </div>
+                                            <div className="flex items-center gap-1 mb-1 justify-center">
+                                                <div className="h-px w-4 bg-gray-300"></div>
+                                                <div className="h-1 w-8 bg-gray-700"></div>
+                                                <div className="h-px w-4 bg-gray-300"></div>
+                                            </div>
+                                            <div className="text-left px-2">
+                                                <div className="h-0.5 w-full bg-gray-400 mb-0.5"></div>
+                                                <div className="h-0.5 w-full bg-gray-400"></div>
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Compact Preview */}
+                                    {template.id === 'compact' && (
+                                        <div className="p-2 text-[4px] leading-tight bg-white h-full">
+                                            <div className="flex justify-between items-center mb-1 border-b border-blue-500 pb-0.5">
+                                                <div className="h-1.5 w-10 bg-blue-700"></div>
+                                                <div className="h-1 w-8 bg-gray-400"></div>
+                                            </div>
+                                            <div className="flex gap-1">
+                                                <div className="w-2/3">
+                                                    <div className="h-1 w-8 bg-gray-700 mb-0.5"></div>
+                                                    <div className="h-0.5 w-full bg-gray-300 mb-0.5"></div>
+                                                    <div className="h-0.5 w-full bg-gray-300 mb-0.5"></div>
+                                                </div>
+                                                <div className="w-1/3">
+                                                    <div className="h-1 w-6 bg-gray-700 mb-0.5"></div>
+                                                    <div className="h-0.5 w-full bg-gray-200 mb-0.5"></div>
+                                                    <div className="h-0.5 w-full bg-gray-200"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -131,29 +220,20 @@ export function SettingsForm() {
                                     <div className="font-semibold text-gray-800 text-base mb-1">{template.name}</div>
                                     <div className="text-sm text-gray-600 mb-2">{template.description}</div>
                                     <div className="flex flex-wrap gap-1">
-                                        {template.id === 'modern' && (
-                                            <>
-                                                <span className="text-xs px-2 py-0.5 bg-blue-100 text-blue-700 rounded">Professional</span>
-                                                <span className="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded">ATS-Friendly</span>
-                                            </>
+                                        {['modern', 'professional', 'corporate'].includes(template.id) && (
+                                            <span className="text-xs px-2 py-0.5 bg-blue-100 text-blue-700 rounded">Professional</span>
                                         )}
-                                        {template.id === 'classic' && (
-                                            <>
-                                                <span className="text-xs px-2 py-0.5 bg-gray-100 text-gray-700 rounded">Traditional</span>
-                                                <span className="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded">ATS-Friendly</span>
-                                            </>
+                                        {['ats', 'minimal', 'compact'].includes(template.id) && (
+                                            <span className="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded">ATS-Friendly</span>
                                         )}
-                                        {template.id === 'minimal' && (
-                                            <>
-                                                <span className="text-xs px-2 py-0.5 bg-purple-100 text-purple-700 rounded">Clean</span>
-                                                <span className="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded">ATS-Friendly</span>
-                                            </>
+                                        {['creative'].includes(template.id) && (
+                                            <span className="text-xs px-2 py-0.5 bg-pink-100 text-pink-700 rounded">Creative</span>
                                         )}
-                                        {template.id === 'creative' && (
-                                            <>
-                                                <span className="text-xs px-2 py-0.5 bg-pink-100 text-pink-700 rounded">Bold</span>
-                                                <span className="text-xs px-2 py-0.5 bg-green-100 text-green-700 rounded">ATS-Friendly</span>
-                                            </>
+                                        {['elegant', 'classic'].includes(template.id) && (
+                                            <span className="text-xs px-2 py-0.5 bg-gray-100 text-gray-700 rounded">Traditional</span>
+                                        )}
+                                        {['compact'].includes(template.id) && (
+                                            <span className="text-xs px-2 py-0.5 bg-purple-100 text-purple-700 rounded">Compact</span>
                                         )}
                                     </div>
                                 </div>

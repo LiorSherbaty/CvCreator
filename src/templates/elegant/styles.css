@@ -1,0 +1,149 @@
+:root {
+    --accent: {{themeColor}};
+    --text: #222;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: var(--text);
+    line-height: 1.6;
+    background-color: #fafafa;
+    margin: 0;
+}
+
+.resume-container {
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 3rem;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.05);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.name {
+    font-size: 2.5rem;
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    text-transform: uppercase;
+}
+
+.label {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 1rem;
+    font-weight: normal;
+}
+
+.contact-line, .social-line {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.contact-line .dot {
+    margin: 0 8px;
+    color: #ccc;
+}
+
+.social-line {
+    margin-top: 0.5rem;
+}
+.social-line a {
+    margin: 0 8px;
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.section {
+    margin-bottom: 2.5rem;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.section-title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Contrast font for headers */
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 1rem;
+    color: #444;
+    font-weight: bold;
+}
+
+.line {
+    height: 1px;
+    flex: 1;
+    background-color: #ddd;
+    max-width: 100px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.summary {
+    max-width: 80%;
+    margin: 0 auto;
+    font-style: italic;
+    color: #555;
+}
+
+.entry {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.entry-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+    color: var(--text);
+}
+
+.entry-subtitle {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 0.8rem;
+}
+
+.highlights {
+    text-align: left;
+    max-width: 85%;
+    margin: 0 auto;
+    padding-left: 1rem;
+}
+.highlights li {
+    margin-bottom: 0.3rem;
+}
+
+.skills-center {
+    text-align: center;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.skill-item {
+    display: inline-block;
+    margin: 0 0.5rem 0.5rem;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* One Page Mode */
+body.one-page-mode .resume-container { padding: 2rem; }
+body.one-page-mode .name { font-size: 2rem; }
+body.one-page-mode .section { margin-bottom: 1.5rem; }

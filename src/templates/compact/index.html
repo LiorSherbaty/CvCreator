@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{basics.name}} - {{basics.label}}</title>
+    <style>
+        {{{styles}}}
+    </style>
+</head>
+<body{{#meta.onePageMode}} class="one-page-mode" {{/meta.onePageMode}}>
+    <div class="resume-container">
+        <header class="header">
+            <div class="header-left">
+                <h1 class="name">{{basics.name}}</h1>
+                <h2 class="label">{{basics.label}}</h2>
+            </div>
+            <div class="header-right">
+                <div class="contact-grid">
+                    {{#basics.email}}<span>{{basics.email}}</span>{{/basics.email}}
+                    {{#basics.phone}}<span>{{basics.phone}}</span>{{/basics.phone}}
+                    {{#basics.location.city}}<span>{{basics.location.city}}, {{basics.location.countryCode}}</span>{{/basics.location.city}}
+                    {{#basics.url}}<span>{{basics.url}}</span>{{/basics.url}}
+                </div>
+            </div>
+        </header>
+
+        <div class="main-grid">
+            <div class="left-col">
+                {{#basics.summary}}
+                <section class="section">
+                    <h3 class="section-title">Summary</h3>
+                    <p class="summary">{{basics.summary}}</p>
+                </section>
+                {{/basics.summary}}
+
+                {{#work.length}}
+                <section class="section">
+                    <h3 class="section-title">Experience</h3>
+                    {{#work}}
+                    <div class="entry">
+                        <div class="entry-head">
+                            <span class="position">{{position}}</span>
+                            <span class="date">{{startDate}} - {{endDate}}</span>
+                        </div>
+                        <div class="company">{{name}}</div>
+                        {{#summary}}<div class="entry-summary">{{summary}}</div>{{/summary}}
+                        {{#highlights.length}}
+                        <ul class="highlights">
+                            {{#highlights}}<li>{{.}}</li>{{/highlights}}
+                        </ul>
+                        {{/highlights.length}}
+                    </div>
+                    {{/work}}
+                </section>
+                {{/work.length}}
+            </div>
+
+            <div class="right-col">
+                {{#skills.length}}
+                <section class="section">
+                    <h3 class="section-title">Skills</h3>
+                    <div class="skills-list">
+                        {{#skills}}
+                        <div class="skill-tag">{{name}}</div>
+                        {{/skills}}
+                    </div>
+                </section>
+                {{/skills.length}}
+
+                {{#education.length}}
+                <section class="section">
+                    <h3 class="section-title">Education</h3>
+                    {{#education}}
+                    <div class="side-entry">
+                        <div class="side-title">{{studyType}}</div>
+                        <div class="side-subtitle">{{institution}}</div>
+                        <div class="side-date">{{startDate}} - {{endDate}}</div>
+                    </div>
+                    {{/education}}
+                </section>
+                {{/education.length}}
+
+                {{#languages.length}}
+                <section class="section">
+                    <h3 class="section-title">Languages</h3>
+                    {{#languages}}
+                    <div class="side-entry">
+                        <div class="side-title">{{language}}</div>
+                        <div class="side-subtitle">{{fluency}}</div>
+                    </div>
+                    {{/languages}}
+                </section>
+                {{/languages.length}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

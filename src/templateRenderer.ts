@@ -10,6 +10,16 @@ import minimalHtml from './templates/minimal/index.html?raw';
 import minimalCss from './templates/minimal/styles.css?raw';
 import creativeHtml from './templates/creative/index.html?raw';
 import creativeCss from './templates/creative/styles.css?raw';
+import professionalHtml from './templates/professional/index.html?raw';
+import professionalCss from './templates/professional/styles.css?raw';
+import atsHtml from './templates/ats/index.html?raw';
+import atsCss from './templates/ats/styles.css?raw';
+import corporateHtml from './templates/corporate/index.html?raw';
+import corporateCss from './templates/corporate/styles.css?raw';
+import elegantHtml from './templates/elegant/index.html?raw';
+import elegantCss from './templates/elegant/styles.css?raw';
+import compactHtml from './templates/compact/index.html?raw';
+import compactCss from './templates/compact/styles.css?raw';
 
 interface TemplateConfig {
     html: string;
@@ -32,6 +42,26 @@ const templates: Record<string, TemplateConfig> = {
     creative: {
         html: creativeHtml,
         css: creativeCss,
+    },
+    professional: {
+        html: professionalHtml,
+        css: professionalCss,
+    },
+    ats: {
+        html: atsHtml,
+        css: atsCss,
+    },
+    corporate: {
+        html: corporateHtml,
+        css: corporateCss,
+    },
+    elegant: {
+        html: elegantHtml,
+        css: elegantCss,
+    },
+    compact: {
+        html: compactHtml,
+        css: compactCss,
     },
 };
 

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{basics.name}} - {{basics.label}}</title>
+    <style>
+        {{{styles}}}
+    </style>
+</head>
+<body{{#meta.onePageMode}} class="one-page-mode" {{/meta.onePageMode}}>
+    <div class="resume-container">
+        <header class="header">
+            <h1 class="name">{{basics.name}}</h1>
+            {{#basics.label}}
+            <div class="label">{{basics.label}}</div>
+            {{/basics.label}}
+            <div class="contact-info">
+                {{#basics.location.city}}
+                <span>{{basics.location.city}}, {{basics.location.countryCode}}</span>
+                <span class="separator">|</span>
+                {{/basics.location.city}}
+                {{#basics.phone}}
+                <span>{{basics.phone}}</span>
+                <span class="separator">|</span>
+                {{/basics.phone}}
+                {{#basics.email}}
+                <span>{{basics.email}}</span>
+                {{/basics.email}}
+                {{#basics.url}}
+                <span class="separator">|</span>
+                <span>{{basics.url}}</span>
+                {{/basics.url}}
+                {{#basics.profiles}}
+                <span class="separator">|</span>
+                <a href="{{url}}">{{network}}</a>
+                {{/basics.profiles}}
+            </div>
+        </header>
+
+        {{#basics.summary}}
+        <section class="section">
+            <h3 class="section-title">Professional Summary</h3>
+            <p class="content">{{basics.summary}}</p>
+        </section>
+        {{/basics.summary}}
+
+        {{#skills.length}}
+        <section class="section">
+            <h3 class="section-title">Technical Skills</h3>
+            <div class="skills-content">
+                {{#skills}}
+                <div class="skill-row">
+                    <span class="skill-category">{{name}}:</span>
+                    <span class="skill-list">{{#keywords}}<span class="keyword">{{.}}</span>{{/keywords}}</span>
+                </div>
+                {{/skills}}
+            </div>
+        </section>
+        {{/skills.length}}
+
+        {{#work.length}}
+        <section class="section">
+            <h3 class="section-title">Experience</h3>
+            {{#work}}
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-left">
+                        <span class="entry-company">{{name}}</span>
+                        <span class="entry-separator">-</span>
+                        <span class="entry-location">{{location}}</span>
+                    </div>
+                    <div class="entry-right">
+                        <span class="entry-date">{{startDate}} – {{endDate}}</span>
+                    </div>
+                </div>
+                <div class="entry-position">{{position}}</div>
+                {{#summary}}
+                <p class="entry-summary">{{summary}}</p>
+                {{/summary}}
+                {{#highlights.length}}
+                <ul class="highlights">
+                    {{#highlights}}
+                    <li>{{.}}</li>
+                    {{/highlights}}
+                </ul>
+                {{/highlights.length}}
+            </div>
+            {{/work}}
+        </section>
+        {{/work.length}}
+
+        {{#education.length}}
+        <section class="section">
+            <h3 class="section-title">Education</h3>
+            {{#education}}
+            <div class="entry">
+                <div class="entry-header">
+                    <div class="entry-left">
+                        <span class="entry-company">{{institution}}</span>
+                    </div>
+                    <div class="entry-right">
+                        <span class="entry-date">{{startDate}} – {{endDate}}</span>
+                    </div>
+                </div>
+                <div class="entry-position">{{studyType}} in {{area}}{{#score}}, GPA: {{score}}{{/score}}</div>
+            </div>
+            {{/education}}
+        </section>
+        {{/education.length}}
+
+        {{#certifications.length}}
+        <section class="section">
+            <h3 class="section-title">Certifications</h3>
+            <ul>
+            {{#certifications}}
+                <li><strong>{{name}}</strong>, {{issuer}} ({{date}})</li>
+            {{/certifications}}
+            </ul>
+        </section>
+        {{/certifications.length}}
+    </div>
+</body>
+</html>

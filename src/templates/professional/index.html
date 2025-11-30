@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{basics.name}} - {{basics.label}}</title>
+    <style>
+        {{{styles}}}
+    </style>
+</head>
+<body{{#meta.onePageMode}} class="one-page-mode" {{/meta.onePageMode}}>
+    <div class="resume-container">
+        <aside class="sidebar">
+            {{#basics.image}}
+            <div class="profile-image-container">
+                <img src="{{basics.image}}" alt="{{basics.name}}" class="profile-image">
+            </div>
+            {{/basics.image}}
+            
+            <div class="contact-section">
+                <h3 class="sidebar-title">Contact</h3>
+                <div class="contact-item">
+                    <span class="icon">✉</span>
+                    <span class="text">{{basics.email}}</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📞</span>
+                    <span class="text">{{basics.phone}}</span>
+                </div>
+                {{#basics.location.city}}
+                <div class="contact-item">
+                    <span class="icon">📍</span>
+                    <span class="text">{{basics.location.city}}, {{basics.location.countryCode}}</span>
+                </div>
+                {{/basics.location.city}}
+                {{#basics.url}}
+                <div class="contact-item">
+                    <span class="icon">🔗</span>
+                    <span class="text">{{basics.url}}</span>
+                </div>
+                {{/basics.url}}
+                
+                {{#basics.profiles.length}}
+                <div class="social-profiles">
+                    {{#basics.profiles}}
+                    <div class="contact-item">
+                        <span class="icon">🌐</span>
+                        <a href="{{url}}" class="text social-link">{{network}}</a>
+                    </div>
+                    {{/basics.profiles}}
+                </div>
+                {{/basics.profiles.length}}
+            </div>
+
+            {{#skills.length}}
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Skills</h3>
+                {{#skills}}
+                <div class="skill-item">
+                    <div class="skill-name">{{name}}</div>
+                    {{#level}}
+                    <div class="skill-level-bar">
+                        <div class="skill-level-fill" style="width: 100%"></div>
+                    </div>
+                    {{/level}}
+                </div>
+                {{/skills}}
+            </div>
+            {{/skills.length}}
+
+            {{#languages.length}}
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Languages</h3>
+                {{#languages}}
+                <div class="language-item">
+                    <div class="language-name">{{language}}</div>
+                    <div class="language-fluency">{{fluency}}</div>
+                </div>
+                {{/languages}}
+            </div>
+            {{/languages.length}}
+
+            {{#interests.length}}
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Interests</h3>
+                <ul class="interests-list">
+                    {{#interests}}
+                    <li>{{name}}</li>
+                    {{/interests}}
+                </ul>
+            </div>
+            {{/interests.length}}
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <h1 class="name">{{basics.name}}</h1>
+                <h2 class="label">{{basics.label}}</h2>
+            </header>
+
+            {{#basics.summary}}
+            <section class="section">
+                <h3 class="section-title">Profile</h3>
+                <p class="summary">{{basics.summary}}</p>
+            </section>
+            {{/basics.summary}}
+
+            {{#work.length}}
+            <section class="section">
+                <h3 class="section-title">Employment History</h3>
+                {{#work}}
+                <div class="entry">
+                    <div class="entry-header">
+                        <h4 class="entry-position">{{position}}</h4>
+                        <span class="entry-date">{{startDate}} - {{endDate}}</span>
+                    </div>
+                    <div class="entry-company">{{name}}</div>
+                    {{#summary}}
+                    <p class="entry-summary">{{summary}}</p>
+                    {{/summary}}
+                    {{#highlights.length}}
+                    <ul class="highlights">
+                        {{#highlights}}
+                        <li>{{.}}</li>
+                        {{/highlights}}
+                    </ul>
+                    {{/highlights.length}}
+                </div>
+                {{/work}}
+            </section>
+            {{/work.length}}
+
+            {{#education.length}}
+            <section class="section">
+                <h3 class="section-title">Education</h3>
+                {{#education}}
+                <div class="entry">
+                    <div class="entry-header">
+                        <h4 class="entry-position">{{studyType}} in {{area}}</h4>
+                        <span class="entry-date">{{startDate}} - {{endDate}}</span>
+                    </div>
+                    <div class="entry-company">{{institution}}</div>
+                    {{#score}}
+                    <div class="entry-score">Grade: {{score}}</div>
+                    {{/score}}
+                </div>
+                {{/education}}
+            </section>
+            {{/education.length}}
+
+            {{#certifications.length}}
+            <section class="section">
+                <h3 class="section-title">Certifications</h3>
+                {{#certifications}}
+                <div class="entry">
+                    <div class="entry-header">
+                        <h4 class="entry-position">{{name}}</h4>
+                        <span class="entry-date">{{date}}</span>
+                    </div>
+                    <div class="entry-company">{{issuer}}</div>
+                </div>
+                {{/certifications}}
+            </section>
+            {{/certifications.length}}
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{basics.name}} - {{basics.label}}</title>
+    <style>
+        {{{styles}}}
+    </style>
+</head>
+<body{{#meta.onePageMode}} class="one-page-mode" {{/meta.onePageMode}}>
+    <div class="resume-container">
+        <header class="header">
+            {{#basics.image}}
+            <img src="{{basics.image}}" alt="{{basics.name}}" class="profile-image">
+            {{/basics.image}}
+            <div class="header-text">
+                <h1 class="name">{{basics.name}}</h1>
+                <h2 class="label">{{basics.label}}</h2>
+            </div>
+        </header>
+
+        <div class="content-grid">
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Contact</h3>
+                    <div class="contact-info">
+                        {{#basics.email}}
+                        <div class="contact-item">{{basics.email}}</div>
+                        {{/basics.email}}
+                        {{#basics.phone}}
+                        <div class="contact-item">{{basics.phone}}</div>
+                        {{/basics.phone}}
+                        {{#basics.location.city}}
+                        <div class="contact-item">{{basics.location.city}}, {{basics.location.countryCode}}</div>
+                        {{/basics.location.city}}
+                        {{#basics.url}}
+                        <div class="contact-item">{{basics.url}}</div>
+                        {{/basics.url}}
+                        {{#basics.profiles}}
+                        <div class="contact-item"><a href="{{url}}">{{network}}</a></div>
+                        {{/basics.profiles}}
+                    </div>
+                </div>
+
+                {{#skills.length}}
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Skills</h3>
+                    {{#skills}}
+                    <div class="skill-group">
+                        <div class="skill-name">{{name}}</div>
+                        <div class="skill-keywords">
+                            {{#keywords}}
+                            <span class="keyword">{{.}}</span>
+                            {{/keywords}}
+                        </div>
+                    </div>
+                    {{/skills}}
+                </div>
+                {{/skills.length}}
+
+                {{#languages.length}}
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Languages</h3>
+                    {{#languages}}
+                    <div class="language-item">
+                        <span class="lang-name">{{language}}</span>
+                        <span class="lang-fluency">({{fluency}})</span>
+                    </div>
+                    {{/languages}}
+                </div>
+                {{/languages.length}}
+            </aside>
+
+            <main class="main-content">
+                {{#basics.summary}}
+                <section class="section">
+                    <h3 class="section-title">Profile</h3>
+                    <p class="summary">{{basics.summary}}</p>
+                </section>
+                {{/basics.summary}}
+
+                {{#work.length}}
+                <section class="section">
+                    <h3 class="section-title">Professional Experience</h3>
+                    {{#work}}
+                    <div class="entry">
+                        <div class="entry-header">
+                            <h4 class="entry-position">{{position}}</h4>
+                            <span class="entry-date">{{startDate}} - {{endDate}}</span>
+                        </div>
+                        <div class="entry-company">{{name}}</div>
+                        {{#summary}}
+                        <p class="entry-summary">{{summary}}</p>
+                        {{/summary}}
+                        {{#highlights.length}}
+                        <ul class="highlights">
+                            {{#highlights}}
+                            <li>{{.}}</li>
+                            {{/highlights}}
+                        </ul>
+                        {{/highlights.length}}
+                    </div>
+                    {{/work}}
+                </section>
+                {{/work.length}}
+
+                {{#education.length}}
+                <section class="section">
+                    <h3 class="section-title">Education</h3>
+                    {{#education}}
+                    <div class="entry">
+                        <div class="entry-header">
+                            <h4 class="entry-position">{{studyType}} in {{area}}</h4>
+                            <span class="entry-date">{{startDate}} - {{endDate}}</span>
+                        </div>
+                        <div class="entry-company">{{institution}}</div>
+                    </div>
+                    {{/education}}
+                </section>
+                {{/education.length}}
+            </main>
+        </div>
+    </div>
+</body>
+</html>
