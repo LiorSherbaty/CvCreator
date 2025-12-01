@@ -3,10 +3,13 @@ import { Toolbar } from './components/Toolbar';
 import { Editor } from './components/Editor';
 import { Preview } from './components/Preview';
 import { Footer } from './components/Footer';
+import { MobileWarning } from './components/MobileWarning';
 import { useResumeStore } from './store';
 import { renderTemplate } from './templateRenderer';
+import { useMobileDetection } from './hooks/useMobileDetection';
 
 function App() {
+    const isMobile = useMobileDetection();
     const resume = useResumeStore((state) => state.resume);
     const importResume = useResumeStore((state) => state.importResume);
     const fileInputRef = useRef<HTMLInputElement>(null);
@@ -105,6 +108,10 @@ function App() {
             alert('Preview not available. Please wait for the CV to render.');
         }
     };
+
+    if (isMobile) {
+        return <MobileWarning />;
+    }
 
     return (
         <div className="h-screen flex flex-col">
