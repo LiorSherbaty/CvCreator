@@ -17,12 +17,12 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 import { GripVertical } from 'lucide-react';
 
-interface SortableItemProps {
+interface ISortableItemProps {
     id: string;
     children: ReactNode;
 }
 
-function SortableItem({ id, children }: SortableItemProps) {
+function SortableItem({ id, children }: ISortableItemProps) {
     const {
         attributes,
         listeners,
@@ -46,6 +46,7 @@ function SortableItem({ id, children }: SortableItemProps) {
                     {...listeners}
                     className="cursor-grab active:cursor-grabbing p-1 hover:bg-gray-200 rounded transition-colors"
                     type="button"
+                    aria-label="Drag to reorder"
                 >
                     <GripVertical className="w-4 h-4 text-gray-400" />
                 </button>
@@ -55,13 +56,22 @@ function SortableItem({ id, children }: SortableItemProps) {
     );
 }
 
-interface DraggableListProps {
-    items: any[];
-    onReorder: (fromIndex: number, toIndex: number) => void;
-    renderItem: (item: any, index: number) => ReactNode;
+// Generic interface requiring items to have an id property
+interface IDraggableItem {
+    id: string;
 }
 
-export function DraggableList({ items, onReorder, renderItem }: DraggableListProps) {
+interface IDraggableListProps<T extends IDraggableItem> {
+    items: T[];
+    onReorder: (fromIndex: number, toIndex: number) => void;
+    renderItem: (item: T, index: number) => ReactNode;
+}
+
+export function DraggableList<T extends IDraggableItem>({
+    items,
+    onReorder,
+    renderItem,
+}: IDraggableListProps<T>) {
     const sensors = useSensors(
         useSensor(PointerSensor),
         useSensor(KeyboardSensor, {
@@ -73,9 +83,11 @@ export function DraggableList({ items, onReorder, renderItem }: DraggableListPro
         const { active, over } = event;
 
         if (over && active.id !== over.id) {
-            const oldIndex = items.findIndex((_, i) => i.toString() === active.id);
-            const newIndex = items.findIndex((_, i) => i.toString() === over.id);
-            onReorder(oldIndex, newIndex);
+            const oldIndex = items.findIndex((item) => item.id === active.id);
+            const newIndex = items.findIndex((item) => item.id === over.id);
+            if (oldIndex !== -1 && newIndex !== -1) {
+                onReorder(oldIndex, newIndex);
+            }
         }
     };
 
@@ -90,12 +102,12 @@ export function DraggableList({ items, onReorder, renderItem }: DraggableListPro
             onDragEnd={handleDragEnd}
         >
             <SortableContext
-                items={items.map((_, i) => i.toString())}
+                items={items.map((item) => item.id)}
                 strategy={verticalListSortingStrategy}
             >
                 <div className="space-y-3">
                     {items.map((item, index) => (
-                        <SortableItem key={index} id={index.toString()}>
+                        <SortableItem key={item.id} id={item.id}>
                             {renderItem(item, index)}
                         </SortableItem>
                     ))}

@@ -30,20 +30,19 @@ import { useResumeStore } from '../store';
 
 type Section = 'settings' | 'basics' | 'work' | 'education' | 'skills' | 'volunteer' | 'languages' | 'interests' | 'certifications' | 'publications';
 
-interface SectionConfig {
+interface ISectionConfig {
     id: Section;
     title: string;
     icon: React.ReactNode;
     component: React.ReactNode;
 }
 
-// Sortable Section Item Component
 function SortableSection({
     section,
     isExpanded,
     onToggle
 }: {
-    section: SectionConfig;
+    section: ISectionConfig;
     isExpanded: boolean;
     onToggle: () => void;
 }) {
@@ -68,44 +67,44 @@ function SortableSection({
             style={style}
             className={`bg-white border rounded-xl overflow-hidden transition-all duration-200 ${
                 isExpanded
-                    ? 'border-blue-200 shadow-md ring-1 ring-blue-100'
-                    : 'border-slate-200 hover:border-slate-300 shadow-sm'
+                    ? 'border-neutral-300 shadow-md'
+                    : 'border-neutral-200 hover:border-neutral-300 hover:shadow-sm'
             }`}
         >
             <button
                 onClick={onToggle}
-                className={`w-full px-5 py-4 flex items-center justify-between text-left transition-colors ${
-                    isExpanded ? 'bg-slate-50/50' : 'bg-white hover:bg-slate-50'
+                className={`w-full px-4 lg:px-5 py-4 flex items-center justify-between text-left transition-colors ${
+                    isExpanded ? 'bg-neutral-50' : 'bg-white hover:bg-neutral-50'
                 }`}
             >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 lg:gap-3">
                     <div
                         {...attributes}
                         {...listeners}
-                        className="cursor-grab active:cursor-grabbing p-1 hover:bg-gray-200 rounded transition-colors"
+                        className="cursor-grab active:cursor-grabbing p-2 lg:p-1 hover:bg-neutral-200 rounded transition-colors touch-manipulation"
                     >
-                        <GripVertical className="w-4 h-4 text-gray-400" />
+                        <GripVertical className="w-5 h-5 lg:w-4 lg:h-4 text-neutral-400" />
                     </div>
                     <div className={`p-2 rounded-lg ${
-                        isExpanded ? 'bg-blue-100 text-blue-600' : 'bg-slate-100 text-slate-500'
+                        isExpanded ? 'bg-neutral-200 text-neutral-700' : 'bg-neutral-100 text-neutral-500'
                     }`}>
                         {section.icon}
                     </div>
-                    <span className={`font-semibold ${
-                        isExpanded ? 'text-slate-800' : 'text-slate-700'
+                    <span className={`font-medium text-sm lg:text-base ${
+                        isExpanded ? 'text-neutral-800' : 'text-neutral-700'
                     }`}>
                         {section.title}
                     </span>
                 </div>
                 {isExpanded ? (
-                    <ChevronUp className="w-5 h-5 text-blue-500" />
+                    <ChevronUp className="w-5 h-5 text-neutral-500 flex-shrink-0" />
                 ) : (
-                    <ChevronDown className="w-5 h-5 text-slate-400" />
+                    <ChevronDown className="w-5 h-5 text-neutral-400 flex-shrink-0" />
                 )}
             </button>
 
             {isExpanded && (
-                <div className="px-5 py-5 border-t border-slate-100 animate-in slide-in-from-top-2 duration-200">
+                <div className="px-4 lg:px-5 py-4 lg:py-5 border-t border-neutral-100">
                     {section.component}
                 </div>
             )}
@@ -113,13 +112,12 @@ function SortableSection({
     );
 }
 
-// Regular (non-sortable) Section Component for Settings
 function RegularSection({
     section,
     isExpanded,
     onToggle
 }: {
-    section: SectionConfig;
+    section: ISectionConfig;
     isExpanded: boolean;
     onToggle: () => void;
 }) {
@@ -127,37 +125,37 @@ function RegularSection({
         <div
             className={`bg-white border rounded-xl overflow-hidden transition-all duration-200 ${
                 isExpanded
-                    ? 'border-blue-200 shadow-md ring-1 ring-blue-100'
-                    : 'border-slate-200 hover:border-slate-300 shadow-sm'
+                    ? 'border-neutral-300 shadow-md'
+                    : 'border-neutral-200 hover:border-neutral-300 hover:shadow-sm'
             }`}
         >
             <button
                 onClick={onToggle}
-                className={`w-full px-5 py-4 flex items-center justify-between text-left transition-colors ${
-                    isExpanded ? 'bg-slate-50/50' : 'bg-white hover:bg-slate-50'
+                className={`w-full px-4 lg:px-5 py-4 flex items-center justify-between text-left transition-colors ${
+                    isExpanded ? 'bg-neutral-50' : 'bg-white hover:bg-neutral-50'
                 }`}
             >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 lg:gap-3">
                     <div className={`p-2 rounded-lg ${
-                        isExpanded ? 'bg-blue-100 text-blue-600' : 'bg-slate-100 text-slate-500'
+                        isExpanded ? 'bg-neutral-200 text-neutral-700' : 'bg-neutral-100 text-neutral-500'
                     }`}>
                         {section.icon}
                     </div>
-                    <span className={`font-semibold ${
-                        isExpanded ? 'text-slate-800' : 'text-slate-700'
+                    <span className={`font-medium text-sm lg:text-base ${
+                        isExpanded ? 'text-neutral-800' : 'text-neutral-700'
                     }`}>
                         {section.title}
                     </span>
                 </div>
                 {isExpanded ? (
-                    <ChevronUp className="w-5 h-5 text-blue-500" />
+                    <ChevronUp className="w-5 h-5 text-neutral-500 flex-shrink-0" />
                 ) : (
-                    <ChevronDown className="w-5 h-5 text-slate-400" />
+                    <ChevronDown className="w-5 h-5 text-neutral-400 flex-shrink-0" />
                 )}
             </button>
 
             {isExpanded && (
-                <div className="px-5 py-5 border-t border-slate-100 animate-in slide-in-from-top-2 duration-200">
+                <div className="px-4 lg:px-5 py-4 lg:py-5 border-t border-neutral-100">
                     {section.component}
                 </div>
             )}
@@ -177,8 +175,7 @@ export function Editor() {
         })
     );
 
-    // Define all sections with their configs
-    const allSectionConfigs: Record<Section, SectionConfig> = {
+    const allSectionConfigs: Record<Section, ISectionConfig> = {
         settings: { id: 'settings', title: 'Settings & Template', icon: <Settings className="w-4 h-4" />, component: <SettingsForm /> },
         basics: { id: 'basics', title: 'Personal Information', icon: <User className="w-4 h-4" />, component: <BasicsForm /> },
         work: { id: 'work', title: 'Work Experience', icon: <Briefcase className="w-4 h-4" />, component: <WorkForm /> },
@@ -191,7 +188,6 @@ export function Editor() {
         interests: { id: 'interests', title: 'Hobbies & Interests', icon: <Smile className="w-4 h-4" />, component: <InterestsForm /> },
     };
 
-    // Get ordered sections (excluding settings)
     const orderedSections = sectionOrder.map(id => allSectionConfigs[id as Section]).filter(Boolean);
 
     const toggleSection = (section: Section) => {
@@ -209,22 +205,20 @@ export function Editor() {
     };
 
     return (
-        <div className="w-full h-full overflow-auto bg-slate-50 border-r border-slate-200 custom-scrollbar">
-            <div className="p-6 max-w-2xl mx-auto">
-                <div className="mb-8">
-                    <h2 className="text-2xl font-bold text-slate-800">Editor</h2>
-                    <p className="text-slate-500 text-sm mt-1">Customize your CV content and appearance</p>
+        <div className="w-full h-full overflow-auto bg-neutral-50 lg:border-r border-neutral-200 custom-scrollbar">
+            <div className="p-4 lg:p-6 max-w-2xl mx-auto">
+                <div className="mb-6 lg:mb-8">
+                    <h2 className="text-xl lg:text-2xl font-semibold text-neutral-800">Editor</h2>
+                    <p className="text-neutral-500 text-sm mt-1">Customize your CV content and appearance</p>
                 </div>
 
                 <div className="space-y-3">
-                    {/* Settings section - always first, not draggable */}
                     <RegularSection
                         section={allSectionConfigs.settings}
                         isExpanded={expandedSection === 'settings'}
                         onToggle={() => toggleSection('settings')}
                     />
 
-                    {/* Draggable sections */}
                     <DndContext
                         sensors={sensors}
                         collisionDetection={closestCenter}

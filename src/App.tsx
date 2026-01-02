@@ -3,16 +3,18 @@ import { Toolbar } from './components/Toolbar';
 import { Editor } from './components/Editor';
 import { Preview } from './components/Preview';
 import { Footer } from './components/Footer';
-import { MobileWarning } from './components/MobileWarning';
+import { ResponsiveLayout } from './components/ResponsiveLayout';
+import { ToastContainer, useToast } from './components/Toast';
 import { useResumeStore } from './store';
 import { renderTemplate } from './templateRenderer';
-import { useMobileDetection } from './hooks/useMobileDetection';
+import { generateId } from './types';
+import { DEFAULT_SECTION_ORDER } from './constants';
 
 function App() {
-    const isMobile = useMobileDetection();
     const resume = useResumeStore((state) => state.resume);
     const importResume = useResumeStore((state) => state.importResume);
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const { toasts, closeToast, success, error, info } = useToast();
 
     const handleExportJson = () => {
         const dataStr = JSON.stringify(resume, null, 2);
@@ -49,32 +51,35 @@ function App() {
                     throw new Error('Missing required field: meta.templateName');
                 }
 
-                // Ensure array fields exist
-                data.work = Array.isArray(data.work) ? data.work : [];
-                data.education = Array.isArray(data.education) ? data.education : [];
-                data.skills = Array.isArray(data.skills) ? data.skills : [];
-                data.volunteer = Array.isArray(data.volunteer) ? data.volunteer : [];
-                data.languages = Array.isArray(data.languages) ? data.languages : [];
-                data.interests = Array.isArray(data.interests) ? data.interests : [];
-                data.certifications = Array.isArray(data.certifications) ? data.certifications : [];
-                data.publications = Array.isArray(data.publications) ? data.publications : [];
+                // Ensure array fields exist and add IDs if missing
+                const ensureArrayWithIds = <T extends { id?: string }>(arr: unknown): T[] => {
+                    if (!Array.isArray(arr)) return [];
+                    return arr.map((item) => (item.id ? item : { ...item, id: generateId() }));
+                };
 
-                // Ensure basics.profiles is an array
-                if (!Array.isArray(data.basics.profiles)) {
-                    data.basics.profiles = [];
-                }
+                data.work = ensureArrayWithIds(data.work);
+                data.education = ensureArrayWithIds(data.education);
+                data.skills = ensureArrayWithIds(data.skills);
+                data.volunteer = ensureArrayWithIds(data.volunteer);
+                data.languages = ensureArrayWithIds(data.languages);
+                data.interests = ensureArrayWithIds(data.interests);
+                data.certifications = ensureArrayWithIds(data.certifications);
+                data.publications = ensureArrayWithIds(data.publications);
+
+                // Ensure basics.profiles is an array with IDs
+                data.basics.profiles = ensureArrayWithIds(data.basics.profiles);
 
                 // Ensure meta.sectionOrder exists (backward compatibility)
                 if (!Array.isArray(data.meta.sectionOrder)) {
-                    data.meta.sectionOrder = ['basics', 'work', 'education', 'skills', 'volunteer', 'certifications', 'publications', 'languages', 'interests'];
+                    data.meta.sectionOrder = [...DEFAULT_SECTION_ORDER];
                 }
 
                 importResume(data);
-                alert('CV imported successfully!');
-            } catch (error) {
-                const message = error instanceof Error ? error.message : 'Invalid JSON file';
-                alert(`Error importing CV: ${message}`);
-                console.error(error);
+                success('CV imported successfully!');
+            } catch (err) {
+                const message = err instanceof Error ? err.message : 'Invalid JSON file';
+                error(`Error importing CV: ${message}`);
+                console.error(err);
             }
         };
         reader.readAsText(file);
@@ -93,9 +98,10 @@ function App() {
             link.download = `cv-${resume.basics.name.replace(/\s+/g, '-').toLowerCase() || 'resume'}.html`;
             link.click();
             URL.revokeObjectURL(url);
-        } catch (error) {
-            alert('Error exporting HTML');
-            console.error(error);
+            success('HTML exported successfully!');
+        } catch (err) {
+            error('Error exporting HTML. Please try again.');
+            console.error(err);
         }
     };
 
@@ -105,13 +111,9 @@ function App() {
         if (iframe?.contentWindow) {
             iframe.contentWindow.print();
         } else {
-            alert('Preview not available. Please wait for the CV to render.');
+            info('Preview not ready. Please wait for the CV to render.');
         }
     };
-
-    if (isMobile) {
-        return <MobileWarning />;
-    }
 
     return (
         <div className="h-screen flex flex-col">
@@ -122,14 +124,10 @@ function App() {
                 onDownloadPdf={handleDownloadPdf}
             />
 
-            <div className="flex-1 flex overflow-hidden">
-                <div className="w-1/2 overflow-auto">
-                    <Editor />
-                </div>
-                <div className="w-1/2 overflow-auto">
-                    <Preview />
-                </div>
-            </div>
+            <ResponsiveLayout
+                editor={<Editor />}
+                preview={<Preview />}
+            />
 
             <Footer />
 
@@ -141,6 +139,9 @@ function App() {
                 onChange={handleFileChange}
                 className="hidden"
             />
+
+            {/* Toast notifications */}
+            <ToastContainer toasts={toasts} onClose={closeToast} />
         </div>
     );
 }

@@ -1,6 +1,7 @@
 import { useResumeStore } from '../../store';
 import { Trash2, Plus } from 'lucide-react';
 import { DraggableList } from '../DraggableList';
+import { IInterestEntry } from '../../types';
 
 export function InterestsForm() {
     const resume = useResumeStore((state) => state.resume);
@@ -16,33 +17,37 @@ export function InterestsForm() {
         });
     };
 
-    const addKeyword = (interestIndex: number) => {
-        const interest = resume.interests[interestIndex];
-        updateEntry('interests', interestIndex, {
+    const addKeyword = (interestId: string) => {
+        const interest = resume.interests.find((i) => i.id === interestId);
+        if (!interest) return;
+        updateEntry('interests', interestId, {
             keywords: [...interest.keywords, ''],
         });
     };
 
-    const updateKeyword = (interestIndex: number, keywordIndex: number, value: string) => {
-        const interest = resume.interests[interestIndex];
+    const updateKeyword = (interestId: string, keywordIndex: number, value: string) => {
+        const interest = resume.interests.find((i) => i.id === interestId);
+        if (!interest) return;
         const newKeywords = [...interest.keywords];
         newKeywords[keywordIndex] = value;
-        updateEntry('interests', interestIndex, { keywords: newKeywords });
+        updateEntry('interests', interestId, { keywords: newKeywords });
     };
 
-    const removeKeyword = (interestIndex: number, keywordIndex: number) => {
-        const interest = resume.interests[interestIndex];
+    const removeKeyword = (interestId: string, keywordIndex: number) => {
+        const interest = resume.interests.find((i) => i.id === interestId);
+        if (!interest) return;
         const newKeywords = interest.keywords.filter((_, i) => i !== keywordIndex);
-        updateEntry('interests', interestIndex, { keywords: newKeywords });
+        updateEntry('interests', interestId, { keywords: newKeywords });
     };
 
-    const renderInterestItem = (interest: typeof resume.interests[0], index: number) => (
-        <div className="p-4 border border-gray-200 rounded-lg bg-gray-50">
+    const renderInterestItem = (interest: IInterestEntry, index: number) => (
+        <div className="p-4 border border-neutral-200 rounded-lg bg-neutral-50">
             <div className="flex justify-between items-start mb-4">
-                <h4 className="font-semibold text-gray-800">Interest {index + 1}</h4>
+                <h4 className="font-medium text-neutral-800">Interest {index + 1}</h4>
                 <button
-                    onClick={() => removeEntry('interests', index)}
-                    className="text-red-600 hover:text-red-800"
+                    onClick={() => removeEntry('interests', interest.id)}
+                    className="text-neutral-500 hover:text-neutral-700 transition-colors"
+                    aria-label="Remove interest"
                 >
                     <Trash2 className="w-4 h-4" />
                 </button>
@@ -50,35 +55,36 @@ export function InterestsForm() {
 
             <div className="space-y-3">
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-neutral-600 mb-1">
                         Name
                     </label>
                     <input
                         type="text"
                         value={interest.name}
-                        onChange={(e) => updateEntry('interests', index, { name: e.target.value })}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        onChange={(e) => updateEntry('interests', interest.id, { name: e.target.value })}
+                        className="w-full px-3 py-2 border border-neutral-200 rounded-lg focus:border-neutral-400 focus:outline-none transition-colors"
                         placeholder="Photography, Hiking, etc."
                     />
                 </div>
 
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-neutral-600 mb-2">
                         Related Topics
                     </label>
                     <div className="space-y-2">
                         {interest.keywords.map((keyword, kIndex) => (
-                            <div key={kIndex} className="flex gap-2">
+                            <div key={`${interest.id}-keyword-${kIndex}`} className="flex gap-2">
                                 <input
                                     type="text"
                                     value={keyword}
-                                    onChange={(e) => updateKeyword(index, kIndex, e.target.value)}
-                                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    onChange={(e) => updateKeyword(interest.id, kIndex, e.target.value)}
+                                    className="flex-1 px-3 py-2 border border-neutral-200 rounded-lg focus:border-neutral-400 focus:outline-none transition-colors"
                                     placeholder="Landscape, Portrait, etc."
                                 />
                                 <button
-                                    onClick={() => removeKeyword(index, kIndex)}
-                                    className="px-3 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors"
+                                    onClick={() => removeKeyword(interest.id, kIndex)}
+                                    className="px-3 py-2 text-neutral-500 hover:text-neutral-700 hover:bg-neutral-100 rounded-lg transition-colors"
+                                    aria-label="Remove topic"
                                 >
                                     <Trash2 className="w-4 h-4" />
                                 </button>
@@ -86,8 +92,8 @@ export function InterestsForm() {
                         ))}
                     </div>
                     <button
-                        onClick={() => addKeyword(index)}
-                        className="mt-2 px-3 py-1 bg-gray-200 text-gray-700 rounded text-sm hover:bg-gray-300 transition-colors"
+                        onClick={() => addKeyword(interest.id)}
+                        className="mt-2 px-3 py-1 text-neutral-600 border border-neutral-200 rounded text-sm hover:bg-neutral-100 transition-colors"
                     >
                         + Add Topic
                     </button>
@@ -106,7 +112,7 @@ export function InterestsForm() {
 
             <button
                 onClick={addInterest}
-                className="w-full px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium flex items-center justify-center gap-2"
+                className="w-full px-4 py-3 bg-neutral-900 text-white rounded-lg hover:bg-neutral-800 transition-colors font-medium flex items-center justify-center gap-2"
             >
                 <Plus className="w-5 h-5" />
                 Add Interest/Hobby

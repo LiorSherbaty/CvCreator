@@ -1,39 +1,55 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { ResumeSchema, initialResumeData } from './types';
+import {
+    IResumeSchema,
+    IArrayEntryMap,
+    AllArraySectionKey,
+    ArraySectionKey,
+    initialResumeData,
+    generateId,
+} from './types';
+import { STORAGE_KEY, STORAGE_VERSION, DEFAULT_SECTION_ORDER } from './constants';
 
-interface ResumeStore {
-    resume: ResumeSchema;
+// Interface for the resume store
+interface IResumeStore {
+    resume: IResumeSchema;
 
     // Update any section of the resume
-    updateSection: <K extends keyof ResumeSchema>(
+    updateSection: <K extends keyof IResumeSchema>(
         section: K,
-        data: Partial<ResumeSchema[K]>
+        data: Partial<IResumeSchema[K]>
     ) => void;
 
-    // Add entry to array fields (work, education, skills, profiles, volunteer, languages, interests, certifications, publications)
-    addEntry: (section: 'work' | 'education' | 'skills' | 'basics.profiles' | 'volunteer' | 'languages' | 'interests' | 'certifications' | 'publications', entry: any) => void;
+    // Add entry to array fields - uses proper typing with IArrayEntryMap
+    addEntry: <K extends AllArraySectionKey>(
+        section: K,
+        entry: Omit<IArrayEntryMap[K], 'id'>
+    ) => void;
 
-    // Remove entry from array fields
-    removeEntry: (section: 'work' | 'education' | 'skills' | 'basics.profiles' | 'volunteer' | 'languages' | 'interests' | 'certifications' | 'publications', index: number) => void;
+    // Remove entry from array fields by ID
+    removeEntry: (section: AllArraySectionKey, id: string) => void;
 
-    // Update entry in array fields
-    updateEntry: (section: 'work' | 'education' | 'skills' | 'basics.profiles' | 'volunteer' | 'languages' | 'interests' | 'certifications' | 'publications', index: number, data: any) => void;
+    // Update entry in array fields by ID
+    updateEntry: <K extends AllArraySectionKey>(
+        section: K,
+        id: string,
+        data: Partial<Omit<IArrayEntryMap[K], 'id'>>
+    ) => void;
 
-    // Reorder entries (for drag and drop)
-    reorderEntry: (section: 'work' | 'education' | 'skills' | 'basics.profiles' | 'volunteer' | 'languages' | 'interests' | 'certifications' | 'publications', fromIndex: number, toIndex: number) => void;
+    // Reorder entries (for drag and drop) - still uses indices for dnd-kit compatibility
+    reorderEntry: (section: AllArraySectionKey, fromIndex: number, toIndex: number) => void;
 
     // Reorder sections
     reorderSections: (fromIndex: number, toIndex: number) => void;
 
     // Import resume data
-    importResume: (data: ResumeSchema) => void;
+    importResume: (data: IResumeSchema) => void;
 
     // Reset to initial state
     resetResume: () => void;
 }
 
-export const useResumeStore = create<ResumeStore>()(
+export const useResumeStore = create<IResumeStore>()(
     persist(
         (set) => ({
             resume: initialResumeData,
@@ -51,27 +67,31 @@ export const useResumeStore = create<ResumeStore>()(
 
             addEntry: (section, entry) =>
                 set((state) => {
+                    // Generate unique ID for new entry
+                    const entryWithId = { ...entry, id: generateId() } as IArrayEntryMap[typeof section];
+
                     if (section === 'basics.profiles') {
                         return {
                             resume: {
                                 ...state.resume,
                                 basics: {
                                     ...state.resume.basics,
-                                    profiles: [...state.resume.basics.profiles, entry],
+                                    profiles: [...state.resume.basics.profiles, entryWithId as IArrayEntryMap['basics.profiles']],
                                 },
                             },
                         };
                     }
 
+                    const sectionKey = section as ArraySectionKey;
                     return {
                         resume: {
                             ...state.resume,
-                            [section]: [...state.resume[section as keyof ResumeSchema] as any[], entry],
+                            [sectionKey]: [...state.resume[sectionKey], entryWithId],
                         },
                     };
                 }),
 
-            removeEntry: (section, index) =>
+            removeEntry: (section, id) =>
                 set((state) => {
                     if (section === 'basics.profiles') {
                         return {
@@ -79,23 +99,22 @@ export const useResumeStore = create<ResumeStore>()(
                                 ...state.resume,
                                 basics: {
                                     ...state.resume.basics,
-                                    profiles: state.resume.basics.profiles.filter((_, i) => i !== index),
+                                    profiles: state.resume.basics.profiles.filter((item) => item.id !== id),
                                 },
                             },
                         };
                     }
 
+                    const sectionKey = section as ArraySectionKey;
                     return {
                         resume: {
                             ...state.resume,
-                            [section]: (state.resume[section as keyof ResumeSchema] as any[]).filter(
-                                (_, i) => i !== index
-                            ),
+                            [sectionKey]: state.resume[sectionKey].filter((item) => item.id !== id),
                         },
                     };
                 }),
 
-            updateEntry: (section, index, data) =>
+            updateEntry: (section, id, data) =>
                 set((state) => {
                     if (section === 'basics.profiles') {
                         return {
@@ -103,19 +122,20 @@ export const useResumeStore = create<ResumeStore>()(
                                 ...state.resume,
                                 basics: {
                                     ...state.resume.basics,
-                                    profiles: state.resume.basics.profiles.map((item, i) =>
-                                        i === index ? { ...item, ...data } : item
+                                    profiles: state.resume.basics.profiles.map((item) =>
+                                        item.id === id ? { ...item, ...data } : item
                                     ),
                                 },
                             },
                         };
                     }
 
+                    const sectionKey = section as ArraySectionKey;
                     return {
                         resume: {
                             ...state.resume,
-                            [section]: (state.resume[section as keyof ResumeSchema] as any[]).map((item, i) =>
-                                i === index ? { ...item, ...data } : item
+                            [sectionKey]: state.resume[sectionKey].map((item) =>
+                                item.id === id ? { ...item, ...data } : item
                             ),
                         },
                     };
@@ -123,18 +143,10 @@ export const useResumeStore = create<ResumeStore>()(
 
             reorderEntry: (section, fromIndex, toIndex) =>
                 set((state) => {
-                    let array: any[];
-
                     if (section === 'basics.profiles') {
-                        array = [...state.resume.basics.profiles];
-                    } else {
-                        array = [...(state.resume[section as keyof ResumeSchema] as any[])];
-                    }
-
-                    const [removed] = array.splice(fromIndex, 1);
-                    array.splice(toIndex, 0, removed);
-
-                    if (section === 'basics.profiles') {
+                        const array = [...state.resume.basics.profiles];
+                        const [removed] = array.splice(fromIndex, 1);
+                        array.splice(toIndex, 0, removed);
                         return {
                             resume: {
                                 ...state.resume,
@@ -146,10 +158,15 @@ export const useResumeStore = create<ResumeStore>()(
                         };
                     }
 
+                    const sectionKey = section as ArraySectionKey;
+                    const array = [...state.resume[sectionKey]];
+                    const [removed] = array.splice(fromIndex, 1);
+                    array.splice(toIndex, 0, removed);
+
                     return {
                         resume: {
                             ...state.resume,
-                            [section]: array,
+                            [sectionKey]: array,
                         },
                     };
                 }),
@@ -182,19 +199,34 @@ export const useResumeStore = create<ResumeStore>()(
                 })),
         }),
         {
-            name: 'cv-creator-storage', // localStorage key
-            version: 1,
-            migrate: (persistedState: any, _version: number) => {
+            name: STORAGE_KEY,
+            version: STORAGE_VERSION,
+            migrate: (persistedState: unknown, version: number) => {
+                const state = persistedState as { resume?: IResumeSchema } | null;
+
                 // Ensure sectionOrder exists for backward compatibility
-                if (persistedState && persistedState.resume && persistedState.resume.meta) {
-                    if (!Array.isArray(persistedState.resume.meta.sectionOrder)) {
-                        persistedState.resume.meta.sectionOrder = [
-                            'basics', 'work', 'education', 'skills', 'volunteer',
-                            'certifications', 'publications', 'languages', 'interests'
-                        ];
+                if (state?.resume?.meta) {
+                    if (!Array.isArray(state.resume.meta.sectionOrder)) {
+                        state.resume.meta.sectionOrder = [...DEFAULT_SECTION_ORDER];
+                    }
+
+                    // Migration: Add IDs to existing entries if missing
+                    if (version < STORAGE_VERSION) {
+                        const addIdsToArray = <T extends { id?: string }>(arr: T[]): T[] =>
+                            arr.map((item) => (item.id ? item : { ...item, id: generateId() }));
+
+                        state.resume.work = addIdsToArray(state.resume.work);
+                        state.resume.education = addIdsToArray(state.resume.education);
+                        state.resume.skills = addIdsToArray(state.resume.skills);
+                        state.resume.volunteer = addIdsToArray(state.resume.volunteer);
+                        state.resume.languages = addIdsToArray(state.resume.languages);
+                        state.resume.interests = addIdsToArray(state.resume.interests);
+                        state.resume.certifications = addIdsToArray(state.resume.certifications);
+                        state.resume.publications = addIdsToArray(state.resume.publications);
+                        state.resume.basics.profiles = addIdsToArray(state.resume.basics.profiles);
                     }
                 }
-                return persistedState;
+                return state;
             },
         }
     )

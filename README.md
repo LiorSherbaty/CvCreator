@@ -2,18 +2,19 @@
 
 A powerful, privacy-focused, and purely client-side application for building professional resumes/CVs. Built with React, TypeScript, and Tailwind CSS.
 
-![CV Creator Screenshot](https://placehold.co/1200x600/e2e8f0/1e293b?text=CV+Creator+Preview)
+> **Free for everyone** - Create professional CVs without accounts, subscriptions, or data collection.
 
 ## 🚀 Features
 
 *   **100% Client-Side:** No server, no database. Your data never leaves your browser.
 *   **Live Preview:** See changes instantly as you edit your resume.
-*   **Multiple Templates:** Choose from Classic, Modern, Minimal, and Creative designs.
+*   **9 Professional Templates:** Modern, Classic, Minimal, Creative, Professional, ATS-Optimized, Corporate, Elegant, and Compact designs.
 *   **PDF Export:** Generate high-quality PDFs using native browser printing.
 *   **Data Persistence:** Auto-saves your progress to LocalStorage.
 *   **Import/Export:** Save your data as JSON to backup or move between devices.
-*   **Drag & Drop:** Easily reorder your work experience, education, and skills.
-*   **Customizable:** Change theme colors and layout to match your style.
+*   **Drag & Drop:** Easily reorder sections, work experience, education, and skills.
+*   **Customizable:** Change theme colors and enable one-page mode.
+*   **AI Integration Tips:** Built-in prompts for using AI to enhance your CV content.
 
 ## 🛠️ Tech Stack
 
@@ -71,14 +72,23 @@ src/
 │   ├── forms/         # Editor forms for each section
 │   ├── Editor.tsx     # Main editor container
 │   ├── Preview.tsx    # Iframe-based preview component
+│   ├── Toast.tsx      # Toast notification system
 │   └── ...
-├── templates/         # Resume templates
-│   ├── classic/       # HTML/CSS for Classic template
-│   ├── modern/        # HTML/CSS for Modern template
-│   └── ...
+├── templates/         # Resume templates (9 templates)
+│   ├── modern/        # Modern template
+│   ├── classic/       # Classic template
+│   ├── minimal/       # Minimal template
+│   ├── creative/      # Creative template
+│   ├── professional/  # Professional template
+│   ├── ats/           # ATS-optimized template
+│   ├── corporate/     # Corporate template
+│   ├── elegant/       # Elegant template
+│   └── compact/       # Compact template
+├── hooks/             # Custom React hooks
+├── constants.ts       # Application constants
 ├── store.ts           # Zustand store for state management
 ├── templateRenderer.ts # Logic to render Mustache templates
-└── types.ts           # TypeScript interfaces (ResumeSchema)
+└── types.ts           # TypeScript interfaces (IResumeSchema)
 ```
 
 ## 🤝 Contributing

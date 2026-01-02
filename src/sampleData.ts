@@ -1,9 +1,9 @@
-import { ResumeSchema } from './types';
+import { IResumeSchema, generateId } from './types';
 
 /**
  * Sample data to demonstrate template design when user hasn't entered their own data yet
  */
-export const sampleResumeData: Omit<ResumeSchema, 'meta'> = {
+export const sampleResumeData: Omit<IResumeSchema, 'meta'> = {
     basics: {
         name: 'John Doe',
         label: 'Full Stack Developer',
@@ -21,11 +21,13 @@ export const sampleResumeData: Omit<ResumeSchema, 'meta'> = {
         },
         profiles: [
             {
+                id: generateId(),
                 network: 'LinkedIn',
                 username: 'johndoe',
                 url: 'https://linkedin.com/in/johndoe',
             },
             {
+                id: generateId(),
                 network: 'GitHub',
                 username: 'johndoe',
                 url: 'https://github.com/johndoe',
@@ -34,6 +36,7 @@ export const sampleResumeData: Omit<ResumeSchema, 'meta'> = {
     },
     work: [
         {
+            id: generateId(),
             name: 'Tech Company Inc',
             position: 'Senior Software Engineer',
             url: 'https://techcompany.com',
@@ -47,6 +50,7 @@ export const sampleResumeData: Omit<ResumeSchema, 'meta'> = {
             ],
         },
         {
+            id: generateId(),
             name: 'StartUp Co',
             position: 'Full Stack Developer',
             url: '',
@@ -61,6 +65,7 @@ export const sampleResumeData: Omit<ResumeSchema, 'meta'> = {
     ],
     education: [
         {
+            id: generateId(),
             institution: 'University of Technology',
             url: '',
             area: 'Computer Science',
@@ -72,16 +77,19 @@ export const sampleResumeData: Omit<ResumeSchema, 'meta'> = {
     ],
     skills: [
         {
+            id: generateId(),
             name: 'Frontend Development',
             level: 'Expert',
             keywords: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS'],
         },
         {
+            id: generateId(),
             name: 'Backend Development',
             level: 'Advanced',
             keywords: ['Node.js', 'Python', 'PostgreSQL', 'Redis'],
         },
         {
+            id: generateId(),
             name: 'DevOps',
             level: 'Intermediate',
             keywords: ['Docker', 'Kubernetes', 'AWS', 'CI/CD'],
@@ -89,6 +97,7 @@ export const sampleResumeData: Omit<ResumeSchema, 'meta'> = {
     ],
     volunteer: [
         {
+            id: generateId(),
             organization: 'Code for Good',
             position: 'Volunteer Developer',
             url: '',
@@ -102,26 +111,31 @@ export const sampleResumeData: Omit<ResumeSchema, 'meta'> = {
     ],
     languages: [
         {
+            id: generateId(),
             language: 'English',
             fluency: 'Native',
         },
         {
+            id: generateId(),
             language: 'Spanish',
             fluency: 'Professional',
         },
     ],
     interests: [
         {
+            id: generateId(),
             name: 'Open Source',
             keywords: ['Contributing to OSS projects', 'Building developer tools'],
         },
         {
+            id: generateId(),
             name: 'Photography',
             keywords: ['Landscape', 'Street photography'],
         },
     ],
     certifications: [
         {
+            id: generateId(),
             name: 'AWS Certified Solutions Architect',
             date: '2022',
             issuer: 'Amazon Web Services',
@@ -130,6 +144,7 @@ export const sampleResumeData: Omit<ResumeSchema, 'meta'> = {
     ],
     publications: [
         {
+            id: generateId(),
             name: 'Building Scalable Web Applications',
             publisher: 'Tech Blog',
             releaseDate: '2023',
@@ -142,7 +157,7 @@ export const sampleResumeData: Omit<ResumeSchema, 'meta'> = {
 /**
  * Check if the resume data is mostly empty (user hasn't started filling it out)
  */
-export function isResumeEmpty(resume: ResumeSchema): boolean {
+export function isResumeEmpty(resume: IResumeSchema): boolean {
     const hasBasicInfo = resume.basics.name.trim() !== '' || resume.basics.email.trim() !== '';
     const hasContent = resume.work.length > 0 || resume.education.length > 0 || resume.skills.length > 0;
 
@@ -152,7 +167,7 @@ export function isResumeEmpty(resume: ResumeSchema): boolean {
 /**
  * Get resume data with sample data fallback for preview
  */
-export function getPreviewData(resume: ResumeSchema): ResumeSchema {
+export function getPreviewData(resume: IResumeSchema): IResumeSchema {
     if (isResumeEmpty(resume)) {
         return {
             ...sampleResumeData,
